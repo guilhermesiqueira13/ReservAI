@@ -7,11 +7,11 @@
   gap: 40px;
 }
 .section-card {
-  width: 200px;
-  height: 310px;
+  padding: 0 29px;
   background-color: var(--card-color);
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 290px;
 }
 .card-title {
   font-family: "Poppins-bold";
@@ -43,8 +43,24 @@
   font-size: 1.25rem;
   margin-bottom: 30px;
 }
-.card-text {
+.card-text-1,
+.card-text-2,
+.card-text-3,
+.card-text-4 {
   font-family: "Inter-regular";
   font-size: 1rem;
   text-align: center;
+}
+.card-text-1,
+.card-text-2 {
+  width: 225px;
+  margin-bottom: 30px;
+}
+.card-text-3 {
+  width: 210px;
+  margin-bottom: 50px;
+}
+.card-text-4 {
+  width: 225px;
+  margin-bottom: 50px;
 }
