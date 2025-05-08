@@ -1,0 +1,104 @@
+:root {
+  --primary-color: #6fe3bc;
+  --button-color: #008891;
+  --button-text: #ffffff;
+  --details-color: #66bfbf;
+  --text-color: #1c1c1c;
+  --card-color: #f9f9f9;
+  --section-color: #f2f2f2;
+  --background-color: #fefefe;
+  --header-color: #f9f9f9;
+  --highlight-gradient: linear-gradient(
+    90deg,
+    rgba(111, 227, 188, 1) 0%,
+    rgba(0, 136, 145, 1) 100%
+  );
+  --subtle-gradient: linear-gradient(
+    90deg,
+    rgba(234, 246, 246, 1) 0%,
+    rgba(249, 249, 249, 1) 100%
+  );
+}
+@font-face {
+  font-family: "Poppins-bold";
+  src: url("../font/Poppins/Poppins-Bold.woff2") format("woff2"),
+    url("../font/Poppins/Poppins-Bold.woff") format("woff"),
+    url("../font/Poppins/Poppins-Bold.ttf") format("truetype");
+  font-weight: 700;
+}
+@font-face {
+  font-family: "Poppins-medium";
+  src: url("../font/Poppins/Poppins-Medium.woff2") format("woff2"),
+    url("../font/Poppins/Poppins-Medium.woff") format("woff"),
+    url("../font/Poppins/Poppins-Medium.ttf") format("truetype");
+  font-weight: 500;
+}
+@font-face {
+  font-family: "Poppins-regular";
+  src: url("../font/Poppins/Poppins-Regular.woff2") format("woff2"),
+    url("../font/Poppins/Poppins-Regular.woff") format("woff"),
+    url("../font/Poppins/Poppins-Regular.ttf") format("truetype");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Inter-regular";
+  src: url("../font/Inter/Inter-Regular.woff2") format("woff2"),
+    url("../font/Inter/Inter-Regular.woff") format("woff"),
+    url("../font/Inter/Inter-Regular.ttf") format("truetype");
+  font-weight: 700;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  line-height: 1.25;
+}
+body {
+  min-height: 100vh;
+  font-size: 16px;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+h1 span {
+  color: var(--primary-color);
+}
+.container-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: var(--header-color);
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+}
+.footer-content {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 50px 140px;
+}
+.footer-container {
+  position: relative;
+}
+.footer-container::after {
+  position: absolute;
+  content: "";
+  bottom: 35px;
+  width: 100%;
+  height: 1px;
+  background-color: #000000;
+}
+.social-media {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.footer-terms {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  font-family: "Inter-regular";
+  font-size: 0.875rem;
+  margin-bottom: 8px;
+}
