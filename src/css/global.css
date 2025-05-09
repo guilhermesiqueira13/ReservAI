@@ -2,6 +2,7 @@
   --primary-color: #6fe3bc;
   --button-color: #008891;
   --button-text: #ffffff;
+  --toggle-color: #ddfff1;
   --details-color: #66bfbf;
   --text-color: #1c1c1c;
   --card-color: #f9f9f9;
@@ -13,11 +14,7 @@
     rgba(111, 227, 188, 1) 0%,
     rgba(0, 136, 145, 1) 100%
   );
-  --subtle-gradient: linear-gradient(
-    90deg,
-    rgba(234, 246, 246, 1) 0%,
-    rgba(249, 249, 249, 1) 100%
-  );
+  --card-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 @font-face {
   font-family: "Poppins-bold";
@@ -53,14 +50,25 @@
   box-sizing: border-box;
   line-height: 1.25;
 }
+li {
+  list-style: none;
+}
 body {
   min-height: 100vh;
   font-size: 16px;
   background-color: var(--background-color);
   color: var(--text-color);
 }
-h1 span {
+h1 span,
+div span {
   color: var(--primary-color);
+}
+footer span {
+  color: var(--text-color);
+}
+button {
+  border: none;
+  background-color: transparent;
 }
 .container-header {
   display: flex;

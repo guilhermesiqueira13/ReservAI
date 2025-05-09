@@ -1,0 +1,160 @@
+.planos-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 50px;
+}
+.planos-content h1 {
+  margin-bottom: 10px;
+}
+.planos-content h2 {
+  margin-bottom: 50px;
+}
+.toggle-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  width: 200px;
+  height: 50px;
+  margin-bottom: 50px;
+  background: var(--toggle-color);
+  border-radius: 8px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+.toggle-btn {
+  width: 100px;
+  height: 50px;
+  font-family: "Poppins-bold";
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s, border-radius 0.3s;
+  border: none;
+}
+.toggle-btn.active {
+  background-color: var(--primary-color);
+  border-radius: 8px;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+}
+.toggle-btn:not(.active) {
+  border-radius: 0;
+}
+.planos-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 0 140px 50px 140px;
+  gap: 40px;
+}
+.plano-card {
+  background-color: var(--card-color);
+  box-shadow: var(--card-box-shadow);
+  border-radius: 8px;
+}
+.plano-card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 30px 0;
+}
+.plano-card-title {
+  font-family: "Poppins-bold";
+  font-size: 2.25rem;
+  margin-bottom: 30px;
+}
+.plano-button {
+  font-family: "Poppins-medium";
+  font-size: 1rem;
+  padding: 14px 28px;
+  margin-bottom: 30px;
+  background-color: var(--button-color);
+  color: var(--button-text);
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+.plano-button:hover {
+  background-color: var(--primary-color);
+}
+.plano-card-list-title {
+  font-family: "Poppins-bold";
+  font-size: 1.25rem;
+  margin-bottom: 30px;
+}
+.plano-card-list li {
+  font-family: "Inter-regular";
+  font-size: 0.973rem;
+  margin-bottom: 10px;
+  text-wrap: wrap;
+}
+.plano-card.premium {
+  position: relative;
+  border: 5px solid var(--details-color);
+}
+.plano-card.premium::after {
+  position: absolute;
+  content: "Popular";
+  width: 100px;
+  height: 23px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Poppins-bold";
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  background-color: var(--details-color);
+  color: var(--button-text);
+  border-radius: 12px;
+  border: 2px solid var(--details-color);
+  top: -15px;
+  right: 110px;
+}
+.faq-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--section-color);
+}
+.faq-content {
+  margin-top: 50px;
+}
+.faq-content h1 {
+  text-align: center;
+}
+.faq-content h2 {
+  text-align: center;
+}
+.faq-accordion {
+  display: flex;
+  flex-direction: column;
+}
+.accordion-item {
+  width: 700px;
+  height: 172px;
+  padding: 20px;
+  margin-bottom: 30px;
+  background-color: var(--card-color);
+  border-radius: 8px;
+  box-shadow: var(--card-box-shadow);
+}
+.accordion-item::before {
+  position: absolute;
+  content: url("../assets/images/minus.svg");
+  width: 20px;
+  height: 4px;
+  right: 360px;
+  display: inline-block;
+  cursor: pointer;
+}
+.accordion-header {
+  font-family: "Poppins-bold";
+  font-size: 1.25rem;
+  margin-bottom: 20px;
+}
+.accordion-content {
+  font-family: "Inter-regular";
+  font-size: 1rem;
+}
