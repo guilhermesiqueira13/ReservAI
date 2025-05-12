@@ -172,7 +172,7 @@
 }
 .accordion-item.active .accordion-content {
   padding-bottom: 10px;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 .accordion-item .plus-icon {
   opacity: 1;
