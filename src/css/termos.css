@@ -1,4 +1,4 @@
-.section-content {
+.section-content.terms {
   margin-top: 50px;
   text-align: center;
 }
@@ -45,4 +45,10 @@
 }
 .terms-list strong {
   font-family: "Poppins-medium";
+}
+.footer-infos a[aria-current="page"] {
+  color: var(--details-color);
+  font-family: "Poppins-medium";
+  pointer-events: none;
+  cursor: default;
 }
