@@ -50,6 +50,10 @@
   box-sizing: border-box;
   line-height: 1.25;
 }
+a {
+  color: var(--text-color);
+  text-decoration: none;
+}
 li {
   list-style: none;
 }
@@ -101,12 +105,15 @@ button {
   grid-template-columns: 1fr 1fr;
   gap: 20px;
 }
-.footer-terms {
+.footer-infos {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 40px;
+  gap: 30px;
   font-family: "Inter-regular";
   font-size: 0.875rem;
   margin-bottom: 8px;
+}
+.footer-infos a:hover {
+  color: var(--details-color);
 }
