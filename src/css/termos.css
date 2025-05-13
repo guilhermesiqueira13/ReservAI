@@ -1,0 +1,48 @@
+.section-content {
+  margin-top: 50px;
+  text-align: center;
+}
+.terms-section-container {
+  margin: 0px 140px 50px 140px;
+}
+.section-content-text {
+  font-family: "Inter-regular";
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+.terms-content {
+  margin-top: 30px;
+}
+.terms-content-title {
+  font-family: "Poppins-medium";
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+}
+.terms-content-text {
+  font-family: "Inter-regular";
+  font-size: 1rem;
+}
+.terms-list {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-family: "Inter-regular";
+  font-size: 1rem;
+}
+.terms-list li {
+  position: relative;
+  margin-bottom: 10px;
+  margin-left: 20px;
+}
+.terms-list li:before {
+  position: absolute;
+  content: " ";
+  width: 6px;
+  height: 6px;
+  left: -15px;
+  top: 8px;
+  border-radius: 50%;
+  background-color: var(--details-color);
+}
+.terms-list strong {
+  font-family: "Poppins-medium";
+}
