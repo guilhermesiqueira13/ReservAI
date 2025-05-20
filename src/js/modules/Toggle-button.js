@@ -1,6 +1,6 @@
 export class ToggleButton {
   constructor() {
-    this.toggleButtons = document.querySelectorAll(".toggle-btn");
+    this.toggleButtons = document.querySelectorAll(".toggle-btn[data-period]");
     this.priceElements = document.querySelectorAll(".card-highlight-number");
     this.periodElements = document.querySelectorAll(".card-highlight-info");
 
@@ -25,64 +25,79 @@ export class ToggleButton {
       this.init();
     } else {
       console.error(
-        "Erro: Elementos do DOM necessários para o ToggleButton não foram encontrados."
+        `Erro de inicialização do ToggleButton: Esperado 2 botões de alternância, 3 elementos de preço e 3 elementos de período. Encontrado: ${this.toggleButtons.length} botões, ${this.priceElements.length} preços, ${this.periodElements.length} períodos.`
       );
     }
   }
 
   init() {
-    this.updatePrices("mensal");
-    const mensalButton = document.querySelector(
-      '.toggle-btn[data-period="mensal"]'
-    );
-    if (mensalButton) {
-      this.setSelectedButton(mensalButton);
+    const defaultButton = this.toggleButtons[0]; // Default to first button (mensal)
+    if (defaultButton && defaultButton.dataset.period) {
+      this.updatePrices(defaultButton.dataset.period);
+      this.setSelectedButton(defaultButton);
+    } else {
+      console.warn("Botão padrão não encontrado ou sem atributo data-period.");
     }
     this.bindEvents();
   }
 
   bindEvents() {
     this.toggleButtons.forEach((button) => {
+      if (!button.dataset.period) {
+        console.warn("Botão de alternância sem atributo data-period:", button);
+        return;
+      }
       button.addEventListener("click", () => {
-        const period = button.dataset.period;
         this.setSelectedButton(button);
-        this.updatePrices(period);
-        console.log("Período selecionado:", period);
+        this.updatePrices(button.dataset.period);
+      });
+      // Optional: Add keyboard navigation for accessibility
+      button.addEventListener("keydown", (event) => {
+        if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+          event.preventDefault();
+          const nextButton =
+            event.key === "ArrowRight"
+              ? button.nextElementSibling
+              : button.previousElementSibling;
+          if (nextButton && nextButton.classList.contains("toggle-btn")) {
+            nextButton.focus();
+            this.setSelectedButton(nextButton);
+            this.updatePrices(nextButton.dataset.period);
+          }
+        }
       });
     });
   }
 
   updatePrices(period) {
-    if (this.prices.hasOwnProperty(period)) {
-      const planOrder = ["basico", "premium", "empresarial"];
-      this.priceElements.forEach((element, index) => {
-        const plan = planOrder[index];
-        if (this.prices[period].hasOwnProperty(plan)) {
-          element.textContent = this.prices[period][plan];
-        } else {
-          console.error(
-            `Erro: Preço para o plano "${plan}" não encontrado para o período "${period}".`
-          );
-        }
-      });
-      const periodText = period === "mensal" ? "por mês" : "por ano";
-      this.periodElements.forEach((element) => {
-        element.textContent = periodText;
-      });
-    } else {
+    if (!this.prices.hasOwnProperty(period)) {
       console.error(`Erro: Período "${period}" inválido.`);
+      return;
     }
+
+    const planOrder = ["basico", "premium", "empresarial"];
+    this.priceElements.forEach((element, index) => {
+      const plan = planOrder[index];
+      if (this.prices[period].hasOwnProperty(plan)) {
+        element.textContent = this.prices[period][plan];
+      } else {
+        console.error(
+          `Erro: Preço para o plano "${plan}" não encontrado para o período "${period}".`
+        );
+      }
+    });
+
+    const periodText = period === "mensal" ? "por mês" : "por ano";
+    this.periodElements.forEach((element) => {
+      element.textContent = periodText;
+    });
   }
 
   setSelectedButton(selectedButton) {
     this.toggleButtons.forEach((button) => {
-      button.classList.remove("selected");
+      const isSelected = button === selectedButton;
+      button.classList.toggle("selected", isSelected);
+      button.setAttribute("aria-selected", isSelected ? "true" : "false");
     });
-    selectedButton.classList.add("selected");
-    console.log(
-      "Botão selecionado:",
-      selectedButton.textContent,
-      selectedButton
-    );
   }
 }
