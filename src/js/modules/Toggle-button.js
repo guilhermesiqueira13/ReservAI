@@ -6,14 +6,14 @@ export class ToggleButton {
 
     this.prices = {
       mensal: {
-        basico: "R$49",
-        premium: "R$99",
-        empresarial: "R$249",
+        basico: "R$49,00",
+        premium: "R$99,00",
+        empresarial: "R$249,00",
       },
       anual: {
-        basico: "R$490",
-        premium: "R$990",
-        empresarial: "R$2490",
+        basico: "R$490,00",
+        premium: "R$990,00",
+        empresarial: "R$2490,00",
       },
     };
 
