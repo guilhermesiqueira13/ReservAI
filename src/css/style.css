@@ -1,5 +1,6 @@
 @import url("./global.css");
-@import url("./index-style.css");
-@import url("./planos-style.css");
+@import url("./index.css");
+@import url("./planos.css");
+@import url("./faq.css");
 @import url("./termos.css");
-@import url("./chatbot-style.css");
+@import url("./chatbot.css");

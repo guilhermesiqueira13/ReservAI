@@ -1,9 +1,13 @@
 export class ToggleButton {
   constructor() {
     this.toggleButtons = document.querySelectorAll(".toggle-btn[data-period]");
-    this.priceElements = document.querySelectorAll(".card-highlight-number");
-    this.periodElements = document.querySelectorAll(".card-highlight-info");
-
+    this.planosCardsContainer = document.querySelector(".planos-cards");
+    this.priceElements = this.planosCardsContainer.querySelectorAll(
+      ".card-highlight-number"
+    );
+    this.periodElements = this.planosCardsContainer.querySelectorAll(
+      ".card-highlight-info"
+    );
     this.prices = {
       mensal: {
         basico: "R$49,00",
@@ -29,9 +33,8 @@ export class ToggleButton {
       );
     }
   }
-
   init() {
-    const defaultButton = this.toggleButtons[0]; // Default to first button (mensal)
+    const defaultButton = this.toggleButtons[0];
     if (defaultButton && defaultButton.dataset.period) {
       this.updatePrices(defaultButton.dataset.period);
       this.setSelectedButton(defaultButton);
@@ -51,7 +54,6 @@ export class ToggleButton {
         this.setSelectedButton(button);
         this.updatePrices(button.dataset.period);
       });
-      // Optional: Add keyboard navigation for accessibility
       button.addEventListener("keydown", (event) => {
         if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
           event.preventDefault();

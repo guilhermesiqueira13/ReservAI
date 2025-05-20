@@ -4,6 +4,6 @@ import { Chatbot } from "./modules/Chatbot-free.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   new Accordion(".accordion-item");
-  new ToggleButton(".chatbot-toggle", "#chatbot");
-  new Chatbot();
+  new ToggleButton();
+  new Chatbot(".chatbot-toggle", "#chatbot");
 });
