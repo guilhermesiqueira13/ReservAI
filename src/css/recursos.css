@@ -2,11 +2,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 50px 0;
 }
 .recursos-container h2,
 .recursos-container h1 {
   text-align: center;
+}
+.recursos-container h1 {
+  margin-top: 50px;
+}
+.recursos-container h2 {
+  margin-bottom: 50px;
 }
 .recursos-container ul {
   display: grid;

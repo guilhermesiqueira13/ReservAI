@@ -124,7 +124,7 @@
             <span class="recursos-icon puzzle">
               <img src="./src/assets/images/puzzle-icon.svg" width="40" height="40" alt="">
             </span>
-            <h3 class="recursos-title">Sistema de encaixe.</h3>
+            <h3 class="recursos-title">Sistema de encaixe automatizado pela IA</h3>
             <p class="recursos-text">O ReservAI encaixa os clients que não conseguiram agendar no horário desejado.</p>
           </li>
         </ul>
@@ -302,26 +302,19 @@
       <div class="chatbot-call-to-action" aria-hidden="true">
         Pronto para experimentar o ReservAI?
       </div>
-      <div class="chatbot-toggle" role="button" aria-label="Abrir chatbot ReservAI" tabindex="0">
-        <img src="./src/assets/images/icon-reservai.png" alt="Ícone do ReservAI" width="50" height="50" aria-hidden="true">
-      </div>
+      <button class="chatbot-toggle" role="button" aria-label="Abrir chatbot ReservAI" tabindex="0">
+        <img src="./src/assets/images/icon-reservai.png" alt="Ícone do ReservAI" width="60" height="60" aria-hidden="true">
+      </button>
       <div class="chatbot-container" id="chatbot" role="dialog" aria-labelledby="chatbot-header-title" aria-modal="true">
         <div class="chatbot-header">
-          <h3 class="chatbot-header-title">ReservAI - Teste Grátis</h3>
+          <h3 id="chatbot-header-title">ReservAI - Teste Grátis</h3>
           <button class="chatbot-close-btn" aria-label="Fechar chatbot" type="button">
-            <img src="./src/assets/images/close-icon.svg" alt="" width="11" height="11" aria-hidden="true">
+            <img src="./src/assets/images/close-icon.svg" alt="Fechar" width="11" height="11" aria-hidden="true">
           </button>
         </div>
-        <div class="chatbot-body" id="chatbot-body" role="log" aria-live="polite">
-          <div class="chatbot-message bot-message">
-            <div>Olá! Sou o ReservAI, seu assistente de agendamentos. Quer testar como agendo em segundos? 😊</div>
-          </div>
-          <div class="chatbot-message bot-message">
-            <div>Digite "Agendar" para começar!</div>
-          </div>
-        </div>
+        <div class="chatbot-body" id="chatbot-body" role="log" aria-live="polite"></div>
         <div class="chatbot-input">
-          <input type="text" id="user-input" placeholder="Digite aqui..." aria-label="Digite sua mensagem para o chatbot">
+          <input type="text" id="user-input" placeholder="Digite aqui..." aria-label="Digite sua mensagem para o chatbot" autocomplete="off">
           <button type="button" aria-label="Enviar mensagem">Enviar</button>
         </div>
       </div>
