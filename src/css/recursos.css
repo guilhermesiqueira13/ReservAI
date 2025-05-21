@@ -1,0 +1,48 @@
+.recursos-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 50px 0;
+}
+.recursos-container h2,
+.recursos-container h1 {
+  text-align: center;
+}
+.recursos-container ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.recursos-container li {
+  background-color: var(--card-color);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: var(--card-box-shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+.recursos-container li:hover,
+.recursos-container li:focus {
+  transform: translateY(-4px);
+  outline: none;
+}
+.recursos-title {
+  font-family: "Poppins-regular";
+  font-size: 1.125rem;
+  margin-bottom: 20px;
+  color: var(--text-color);
+}
+.recursos-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Inter-regular";
+  font-size: 1rem;
+  color: var(--text-color);
+}
+.recursos-icon img {
+  margin-bottom: 10px;
+}

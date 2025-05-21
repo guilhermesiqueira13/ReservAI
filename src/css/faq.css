@@ -3,7 +3,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: var(--section-color);
 }
 .faq-content {
   margin-top: 50px;

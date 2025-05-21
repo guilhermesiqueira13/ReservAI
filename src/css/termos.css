@@ -41,13 +41,13 @@
   left: -15px;
   top: 8px;
   border-radius: 50%;
-  background-color: var(--details-color);
+  background-color: var(--primary-color);
 }
 .terms-list strong {
   font-family: "Poppins-medium";
 }
 .footer-infos a[aria-current="page"] {
-  color: var(--details-color);
+  color: var(--primary-color);
   font-family: "Poppins-medium";
   pointer-events: none;
   cursor: default;

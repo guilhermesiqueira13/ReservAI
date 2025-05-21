@@ -19,7 +19,7 @@
   width: 200px;
   height: 50px;
   margin-bottom: 50px;
-  border-radius: 8px;
+  border-radius: 12px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 .toggle-btn {
@@ -57,7 +57,14 @@
   margin-bottom: 50px;
   background-color: var(--card-color);
   box-shadow: var(--card-box-shadow);
-  border-radius: 8px;
+  border-radius: 12px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+.plano-card:hover,
+.plano-card:focus {
+  transform: translateY(-4px);
+  outline: none;
 }
 .plano-card-content {
   text-align: center;
@@ -76,13 +83,15 @@
   background-color: transparent;
   border: 1px solid var(--button-color);
   color: var(--text-color);
-  border-radius: 8px;
+  border-radius: 12px;
+  transition: background-color 0.3s ease;
   cursor: pointer;
 }
 .plano-button:hover {
   background-color: var(--primary-color);
   color: var(--button-text);
   border: 1px solid var(--primary-color);
+  transition: color 0.1s ease;
 }
 .plano-card-list-title {
   font-family: "Poppins-bold";
