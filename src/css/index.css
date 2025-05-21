@@ -150,22 +150,6 @@
   color: var(--details-color);
   margin-bottom: 30px;
 }
-.card-highlight {
-  text-align: center;
-}
-.card-highlight-number {
-  font-family: "Poppins-bold";
-  font-size: 3.75rem;
-  background: var(--highlight-gradient);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-.card-highlight-info {
-  font-family: "Poppins-medium";
-  font-size: 1.25rem;
-  margin-bottom: 30px;
-}
 .card-text-1,
 .card-text-2,
 .card-text-3,

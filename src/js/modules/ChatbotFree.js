@@ -2,64 +2,88 @@ export class Chatbot {
   constructor(toggleSelector, chatbotSelector) {
     this.responses = {
       initial: [
-        "Oi! 😎 Sou o ReservAI, seu assistente pra agendar serviços como consultas, cortes de cabelo e mais! Digite 'agendar' pra começar!",
-        "E aí! 😊 Sou o ReservAI, pronto pra te ajudar a marcar consultas, cortes de cabelo ou outros serviços! É só dizer 'agendar'!",
+        (context) => `${context.greeting}, de boa? 😎 Sou o ReservAI, seu parceiro pra agendar consultas, cortes de cabelo, massagens ou qualquer parada! Fala 'agendar', 'marcar', 'reservar' ou 'quero agendar' pra começar!`,
+        (context) => `${context.greeting}! 😊 Tô aqui como ReservAI pra te ajudar a marcar aquele serviço top, tipo consulta ou corte! Diz 'agendamento', 'quero marcar' ou 'reservar'!`,
+        (context) => `${context.greeting}, e aí? 😄 Sou o ReservAI, bora agendar consultas, cortes ou o que rolar? Fala 'agendar' ou 'quero fazer um agendamento'!`,
+        (context) => `${context.greeting}, beleza? 😎 Tô pronto pra te ajudar a marcar algo irado! É só dizer 'marcar', 'agendamento' ou 'quero agendar'!`,
+      ],
+      greeting: [
+        (context) => `E aí, ${context.name || "tudo bem"}? 😄 Tô de boa por aqui! Bora agendar algo? Fala 'agendar', 'marcar' ou 'reservar'!`,
+        (context) => `Opa, ${context.greeting.toLowerCase()}! 😎 Curti o papo, e tu, tá de boa? Diz 'agendamento' ou 'quero agendar' pra marcar algo!`,
+        (context) => `Fala, ${context.name || "parceiro"}! 😊 Tô na área pra te ajudar. Quer marcar algo? É só dizer 'agendar' ou 'quero marcar'!`,
+        (context) => `Oi, ${context.name || "de boa"}? 😄 Tô ligado, bora agendar aquele serviço top? Fala 'marcar' ou 'quero fazer um agendamento'!`,
       ],
       askingService: [
-        (context) =>
-          `Beleza, ${
-            context.name || "você"
-          }! Qual serviço você quer? Tipo consulta, corte de cabelo... 😄`,
-        (context) =>
-          `Tranquilo! O que você quer agendar hoje? (Ex.: massagem, exame médico)`,
+        (context) => `Eita, ${context.name || "você"}, bora agendar! 😄 Qual serviço você tá querendo? Tipo corte de cabelo, consulta, massagem...`,
+        (context) => `Show, ${context.name || "parceiro"}! 😎 Me diz qual é o serviço, tipo exame ou massagem!`,
+        (context) => `Tá na hora, ${context.name || "amigo"}! 😊 Qual serviço rola? Pode ser consulta, corte, qualquer coisa!`,
+        (context) => `Massa, ${context.name || "você"}! 😄 Qual é a vibe? Corte de cabelo, consulta, massagem? Manda aí!`,
       ],
       askingTime: [
-        (context) =>
-          `Show, ${
-            context.service ? `${context.service} marcado!` : ""
-          } Quando fica bom pra você? (Ex.: amanhã às 14h ou 25/05 às 10h)`,
-        (context) =>
-          `Perfeito! 😊 Pra quando você quer esse ${
-            context.service || "serviço"
-          }? (Ex.: hoje às 15h)`,
+        (context) => `Massa, ${context.service ? `curti o ${context.service}!` : ""} 😎 Quando você quer marcar? (Ex.: hoje às 14h, amanhã às 9h ou 25/05 às 10h, entre 8h e 18h)`,
+        (context) => `Beleza, ${context.service ? `${context.service} tá na área!` : ""} 😄 Me fala o dia e horário, tipo hoje às 15h ou sexta às 9h! (Das 8h às 18h, hein!)`,
+        (context) => `Tô ligado, ${context.service ? `${context.service} é top!` : ""} 😊 Quando fica bom pra você? (Ex.: amanhã às 14h ou 25/05 às 10h, entre 8h e 18h)`,
+        (context) => `Show, ${context.service ? `${context.service} é isso aí!` : ""} 😎 Manda o dia e horário, tipo hoje às 10h ou 25/05 às 14h! (Entre 8h e 18h, tá?)`,
       ],
       askingContact: [
-        (context) =>
-          `Quase na reta final, ${
-            context.name || "amigo"
-          }! 🎉 Me passa seu nome e e-mail (ex.: João, joao@email.com).`,
-        (context) =>
-          `Falta pouco! 😄 Me diz seu nome e e-mail, tipo: Maria, maria@email.com.`,
+        (context) => `Quase na reta final, ${context.name || "campeão"}! 🎉 Me passa seu nome e e-mail, tipo: João, joao@email.com.`,
+        (context) => `Falta pouco, ${context.name || "você"}! 😄 Manda nome e e-mail, assim: Maria, maria@email.com.`,
+        (context) => `Tá quase, ${context.name || "parceiro"}! 😎 Só preciso do seu nome e e-mail, tipo: Ana, ana@email.com.`,
+        (context) => `Já tá na mão, ${context.name || "amigo"}! 😊 Manda seu nome e e-mail, tipo: Pedro, pedro@email.com.`,
       ],
       success: [
-        (context) =>
-          `Valeu, ${context.name}! 🚀 Seu agendamento tá na mão. Dá uma olhada no ${context.email} pros próximos passos!`,
-        (context) =>
-          `Show de bola, ${context.name}! 😎 Solicitação enviada. Confere o ${context.email} que já já tem novidade!`,
+        (context) => `Mandou ver, ${context.name}! 🚀 Seu agendamento tá encaminhado. Confere o ${context.email} que logo tem novidade!`,
+        (context) => `Arrasou, ${context.name}! 😎 Agendamento na mão! Dá uma olhada no ${context.email} pros próximos passos!`,
+        (context) => `Tô impressionado, ${context.name}! 🎉 Tudo certinho, checa o ${context.email} que já já chega algo!`,
+        (context) => `Massa, ${context.name}! 😄 Agendamento fechado! Fica de olho no ${context.email} pra mais detalhes!`,
       ],
       invalidInput: [
-        "Ops, não peguei direito. 😅 Tente dizer 'agendar' ou me contar o que quer!",
-        "Eita, acho que não entendi. 😜 Fala 'agendar' ou explica melhor pra mim?",
+        "Vish, não saquei essa! 😅 Tenta 'agendar', 'marcar', 'reservar', 'quero agendar' ou 'fazer agendamento', ou me conta direitinho o que você quer!",
+        "Eita, peguei um vento aqui! 😜 Fala 'agendamento', 'quero marcar' ou 'reservar', ou explica melhor pra mim?",
+        "Hmm, tá meio confuso isso! 😄 Que tal 'agendar' ou 'quero fazer um agendamento' pra começar?",
+        "Nossa, não entendi nadinha! 😅 Diz 'marcar', 'agendar' ou 'quero agendar' que a gente desenrola!",
       ],
       invalidContact: [
-        "Hmm, algo tá errado aí. 😕 Tenta de novo com nome e e-mail, tipo: João, joao@email.com.",
-        "Peraí, faltou algo! 😊 Me passa nome e e-mail, como: Maria, maria@email.com.",
+        "Peraí, esse contato tá zoado! 😕 Tenta de novo, tipo: João, joao@email.com.",
+        "Nossa, faltou algo aí! 😊 Manda nome e e-mail direitinho, como: Maria, maria@email.com.",
+        "Ops, esse contato não rolou! 😅 Tenta assim: Ana, ana@email.com.",
+        "Eita, esse contato tá bugado! 😄 Manda certinho, tipo: Pedro, pedro@email.com.",
       ],
       invalidDateTime: [
-        "Ops, essa data ou hora tá estranha. 😅 Tenta algo como 'amanhã às 14h' ou '25/05 às 10h'.",
-        "Não rolou entender essa data. 😜 Pode mandar algo tipo 'hoje às 15h'?",
+        "Hmm, essa data tá meio bagunçada! 😅 Tenta algo tipo 'hoje às 14h', 'amanhã às 9h' ou '25/05 às 10h'.",
+        "Eita, não captei esse horário! 😜 Manda algo como 'hoje às 15h' ou 'sexta às 9h' que dá certo!",
+        "Poxa, essa data não colou! 😄 Tenta de novo, tipo 'amanhã às 14h' ou '25/05 às 10h'!",
+        "Vish, essa data tá estranha! 😅 Manda algo tipo 'hoje às 10h' ou '25 de maio às 14h'!",
+      ],
+      pastDateTime: [
+        "Ops, essa data já passou! 😅 Me fala uma data de hoje ou depois, tipo 'hoje às 14h' ou '25/05 às 10h'.",
+        "Vish, não dá pra marcar no passado! 😜 Tenta algo como 'amanhã às 9h' ou 'sexta às 15h'.",
+        "Eita, essa data não rola! 😄 Manda uma data atual ou futura, tipo 'hoje às 14h' ou '25/05 às 10h'!",
+        "Nossa, essa data já era! 😅 Tenta algo tipo 'amanhã às 14h' ou '25 de maio às 10h'!",
+      ],
+      invalidTime: [
+        "Hmm, esse horário não rola! 😅 Tenta algo entre 8h e 18h, tipo 'hoje às 14h' ou 'amanhã às 9h'.",
+        "Eita, fora do horário comercial! 😜 Manda algo das 8h às 18h, tipo 'sexta às 15h'.",
+        "Vish, esse horário tá off! 😄 Tenta entre 8h e 18h, tipo '25/05 às 10h'.",
+        "Ops, não atendo nesse horário! 😅 Manda algo das 8h às 18h, tipo 'hoje às 14h'!",
       ],
       confirmService: [
-        (context) =>
-          `Entendi, você quer ${context.service}, certo? 😄 Confirma pra mim ou diz se é outro!`,
+        (context) => `Tô ligado, você quer ${context.service}, né? 😄 Confirma com 'sim', 'beleza' ou 'não', ou me diz outro serviço!`,
+        (context) => `Beleza, ${context.service}? 😎 É isso mesmo? Diz 'sim', 'tá bom' ou 'não', ou troca o serviço!`,
+        (context) => `Entendi, ${context.service}! 😊 Tá certo? Fala 'sim', 'ok' ou 'não', ou me diz outro!`,
+        (context) => `Show, ${context.service}, é isso? 😄 Manda 'sim', 'pode ser' ou 'não', ou escolhe outro serviço!`,
       ],
       back: [
-        "Beleza, voltando um passo! 😊 O que você quer fazer agora?",
-        "Tranquilo, vamos dar um passo atrás! 😄 Me diz como continuar.",
+        "Sem drama, vamo voltar um pouco! 😊 O que você quer agora?",
+        "Tranquilo, dando um passo pra trás! 😄 Fala aí como seguimos!",
+        "Beleza, voltando rapidinho! 😎 Me diz o que rola!",
+        "Tá de boa, vamo retroceder! 😊 E agora, qual é o plano?",
       ],
       cancel: [
-        "Sem problemas, cancelado! 😎 Quer recomeçar? É só dizer 'agendar'!",
-        "Tudo certo, zerei o papo! 😊 Fala 'agendar' quando quiser começar.",
+        "Tá de boa, cancelei tudo! 😎 Quer recomeçar? Fala 'agendar', 'marcar', 'reservar' ou 'quero agendar'!",
+        "Sem drama, zerei o papo! 😊 Diz 'agendamento' ou 'quero marcar' quando quiser voltar!",
+        "Tudo certo, cancelado! 😄 Se quiser, é só falar 'agendar' ou 'quero fazer um agendamento'!",
+        "Beleza, limpei tudo! 😎 Pra recomeçar, é só dizer 'marcar' ou 'quero agendar'!",
       ],
     };
 
@@ -73,6 +97,7 @@ export class Chatbot {
         email: null,
       },
       history: [],
+      hasWelcomed: false,
     };
 
     this.domElements = {
@@ -91,8 +116,19 @@ export class Chatbot {
       ctaDelayTime: 5000,
       messageProcessDelay: 800,
       typingIndicatorDelay: 400,
-      initialKeyword: "agendar",
+      initialKeywords: [
+        "agendar",
+        "agendamento",
+        "quero agendar",
+        "quero fazer um agendamento",
+        "marcar",
+        "fazer agendamento",
+        "reservar",
+        "quero marcar",
+        "agendamento agora",
+      ],
       maxHistorySteps: 5,
+      businessHours: { start: 8, end: 18 }, // Horário comercial: 8h às 18h
     };
 
     this.init();
@@ -107,7 +143,6 @@ export class Chatbot {
     this.initEventListeners();
     this.initScrollListener();
     this.initCallToActionDelay();
-    this.showWelcomeMessage();
   }
 
   assignDOMElements() {
@@ -116,9 +151,18 @@ export class Chatbot {
     }
   }
 
+  getGreeting() {
+    const hour = new Date().getHours();
+    if (hour < 12) return "Bom dia";
+    if (hour < 18) return "Boa tarde";
+    return "Boa noite";
+  }
+
   showWelcomeMessage() {
-    const welcomeMessage = this.getRandomResponse(this.responses.initial);
+    const context = { greeting: this.getGreeting() };
+    const welcomeMessage = this.getRandomResponse(this.responses.initial, context);
     this.addMessage(welcomeMessage, "bot-message");
+    this.conversationState.hasWelcomed = true;
   }
 
   toggleChatbot() {
@@ -130,6 +174,9 @@ export class Chatbot {
       this.setElementVisibility(this.callToActionElement, false);
       this.setElementVisibility(this.toggleButtonElement, false);
       this.userInput?.focus();
+      if (!this.conversationState.hasWelcomed) {
+        setTimeout(() => this.showWelcomeMessage(), this.config.typingIndicatorDelay);
+      }
     } else {
       this.setElementVisibility(this.toggleButtonElement, true);
       this.setElementVisibility(
@@ -177,9 +224,102 @@ export class Chatbot {
   }
 
   validateDateTime(text) {
-    const dateRegex =
-      /\d{1,2}\/\d{1,2}(\/\d{2,4})?|\d{1,2}h|\d{1,2}:\d{2}|amanhã|hoje|sexta|próxima\s+\w+/i;
-    return dateRegex.test(text);
+    const lowerText = text.toLowerCase().trim();
+    const now = new Date();
+    now.setHours(0, 0, 0, 0); // Normaliza para comparar apenas datas
+
+    // Regex para formatos de data e hora
+    const dateRegex = /^(\d{1,2}\/\d{1,2}(\/\d{2,4})?|\d{1,2}\s*de\s*(janeiro|fevereiro|março|abril|maio|junho|julho|agosto|setembro|outubro|novembro|dezembro)(?:\s*de\s*\d{4})?)\s*(às)?\s*(\d{1,2}(?::\d{2})?\s*(h)?)?$/i;
+    const dayRegex = /^(hoje|amanhã|(segunda|terça|quarta|quinta|sexta|sábado|domingo)(-feira)?|próxima\s+(segunda|terça|quarta|quinta|sexta|sábado|domingo))\s*(às)?\s*(\d{1,2}(?::\d{2})?\s*(h)?)?$/i;
+
+    let parsedDate;
+    let hours = 0;
+    let minutes = 0;
+
+    // Função para converter texto em objeto Date
+    const parseDate = (day, month, year) => {
+      const date = new Date();
+      if (day && month) {
+        year = year || date.getFullYear();
+        if (year < 100) year += 2000;
+        date.setFullYear(year, month - 1, day);
+      }
+      date.setHours(hours, minutes, 0, 0);
+      return date;
+    };
+
+    // Mapeamento de meses
+    const months = {
+      janeiro: 1,
+      fevereiro: 2,
+      março: 3,
+      abril: 4,
+      maio: 5,
+      junho: 6,
+      julho: 7,
+      agosto: 8,
+      setembro: 9,
+      outubro: 10,
+      novembro: 11,
+      dezembro: 12,
+    };
+
+    // Manipula "hoje" e "amanhã"
+    if (lowerText.includes("hoje")) {
+      parsedDate = new Date(now);
+    } else if (lowerText.includes("amanhã")) {
+      parsedDate = new Date(now);
+      parsedDate.setDate(now.getDate() + 1);
+    }
+    // Manipula dias da semana
+    else if (dayRegex.test(lowerText)) {
+      const dayNames = ["domingo", "segunda", "terça", "quarta", "quinta", "sexta", "sábado"];
+      const dayMatch = lowerText.match(dayRegex);
+      const targetDayName = dayMatch[1].startsWith("próxima") ? dayMatch[1].split(" ")[1] : dayMatch[1];
+      const targetDay = dayNames.findIndex(day => targetDayName.startsWith(day));
+      if (targetDay >= 0) {
+        parsedDate = new Date(now);
+        const currentDay = now.getDay();
+        let daysToAdd = targetDay - currentDay;
+        if (daysToAdd <= 0 || dayMatch[1].startsWith("próxima")) daysToAdd += 7;
+        parsedDate.setDate(now.getDate() + daysToAdd);
+      }
+    }
+    // Manipula formatos numéricos e textuais
+    else if (dateRegex.test(lowerText)) {
+      const numericMatch = lowerText.match(/^(\d{1,2})\/(\d{1,2})(\/(\d{2,4}))?/);
+      const textMatch = lowerText.match(/(\d{1,2})\s*de\s*(janeiro|fevereiro|março|abril|maio|junho|julho|agosto|setembro|outubro|novembro|dezembro)(?:\s*de\s*(\d{4}))?/i);
+      const timeMatch = lowerText.match(/(\d{1,2})(?::(\d{2}))?\s*(h)?/i);
+
+      if (numericMatch) {
+        const day = parseInt(numericMatch[1]);
+        const month = parseInt(numericMatch[2]);
+        const year = numericMatch[4] ? parseInt(numericMatch[4]) : now.getFullYear();
+        parsedDate = parseDate(day, month, year);
+      } else if (textMatch) {
+        const day = parseInt(textMatch[1]);
+        const month = months[textMatch[2].toLowerCase()];
+        const year = textMatch[3] ? parseInt(textMatch[3]) : now.getFullYear();
+        parsedDate = parseDate(day, month, year);
+      }
+
+      if (timeMatch) {
+        hours = parseInt(timeMatch[1]);
+        minutes = timeMatch[2] ? parseInt(timeMatch[2]) : 0;
+        parsedDate?.setHours(hours, minutes);
+      }
+    }
+
+    // Valida data e horário comercial
+    if (parsedDate && !isNaN(parsedDate.getTime())) {
+      const normalizedParsedDate = new Date(parsedDate);
+      normalizedParsedDate.setHours(0, 0, 0, 0);
+      if (normalizedParsedDate < now) return "past";
+      if (hours < this.config.businessHours.start || hours >= this.config.businessHours.end) return "invalidTime";
+      return true;
+    }
+
+    return false;
   }
 
   detectIntent(userText) {
@@ -190,40 +330,42 @@ export class Chatbot {
     if (lowerText.includes("cancelar") || lowerText.includes("desistir")) {
       return "cancel";
     }
-    if (lowerText.includes(this.config.initialKeyword)) {
+    if (["oi", "olá", "bom dia", "boa tarde", "boa noite", "e aí", "tudo bem", "opa", "fala"].some(g => lowerText.includes(g))) {
+      return "greeting";
+    }
+    if (this.config.initialKeywords.some(keyword => lowerText.includes(keyword))) {
       return "start";
     }
-    if (
-      this.conversationState.step === "askingService" &&
-      lowerText.match(/corte|consulta|massagem|exame/i)
-    ) {
+    if (this.conversationState.step === "confirmService") {
+      if (["sim", "s", "ok", "confirmo", "tá certo", "isso", "beleza", "tá bom", "pode ser"].some(word => lowerText.includes(word))) {
+        return "confirm";
+      }
+      if (["não", "n", "nao", "não quero", "outro", "deixa pra lá", "trocar", "muda"].some(word => lowerText.includes(word))) {
+        return "reject";
+      }
+    }
+    if (this.conversationState.step === "askingService" && lowerText.match(/corte|consulta|massagem|exame/i)) {
       return "service";
     }
-    if (
-      this.conversationState.step === "askingTime" &&
-      this.validateDateTime(lowerText)
-    ) {
-      return "datetime";
+    if (this.conversationState.step === "askingTime") {
+      const dateValidation = this.validateDateTime(lowerText);
+      if (dateValidation === true) return "datetime";
+      if (dateValidation === "past") return "pastDateTime";
+      if (dateValidation === "invalidTime") return "invalidTime";
     }
-    if (
-      this.conversationState.step === "askingContact" &&
-      lowerText.includes("@")
-    ) {
+    if (this.conversationState.step === "askingContact" && lowerText.includes("@")) {
       return "contact";
     }
     return "unknown";
   }
 
   getRandomResponse(responses, context = {}) {
-    let selectedResponse = responses;
-    if (Array.isArray(responses)) {
-      selectedResponse =
-        responses[Math.floor(Math.random() * responses.length)];
-    }
-    if (typeof selectedResponse === "function") {
-      return selectedResponse(context);
-    }
-    return selectedResponse;
+    const selectedResponse = Array.isArray(responses)
+      ? responses[Math.floor(Math.random() * responses.length)]
+      : responses;
+    return typeof selectedResponse === "function"
+      ? selectedResponse(context)
+      : selectedResponse;
   }
 
   saveHistory(step, data) {
@@ -246,12 +388,16 @@ export class Chatbot {
   processMessage(userText) {
     let botResponse = "";
     let nextStep = this.conversationState.step;
-    const intent = this.detectIntent(userText);
-    const context = { ...this.conversationState.data };
+    const context = { ...this.conversationState.data, greeting: this.getGreeting() };
 
     this.saveHistory(this.conversationState.step, this.conversationState.data);
 
-    switch (intent) {
+    switch (this.detectIntent(userText)) {
+      case "greeting":
+        botResponse = this.getRandomResponse(this.responses.greeting, context);
+        nextStep = this.conversationState.step; // Mantém o passo atual
+        break;
+
       case "back":
         botResponse = this.getRandomResponse(this.responses.back);
         break;
@@ -259,21 +405,12 @@ export class Chatbot {
       case "cancel":
         botResponse = this.getRandomResponse(this.responses.cancel);
         this.conversationState.step = "initial";
-        this.conversationState.data = {
-          service: null,
-          date: null,
-          time: null,
-          name: null,
-          email: null,
-        };
+        this.conversationState.data = { service: null, date: null, time: null, name: null, email: null };
         break;
 
       case "start":
         if (this.conversationState.step === "initial") {
-          botResponse = this.getRandomResponse(
-            this.responses.askingService,
-            context
-          );
+          botResponse = this.getRandomResponse(this.responses.askingService, context);
           nextStep = "askingService";
         } else {
           botResponse = this.getRandomResponse(this.responses.invalidInput);
@@ -283,29 +420,48 @@ export class Chatbot {
       case "service":
         if (this.conversationState.step === "askingService") {
           this.conversationState.data.service = userText;
-          botResponse = this.getRandomResponse(this.responses.confirmService, {
-            service: userText,
-          });
+          botResponse = this.getRandomResponse(this.responses.confirmService, { ...context, service: userText });
           nextStep = "confirmService";
         } else {
           botResponse = this.getRandomResponse(this.responses.invalidInput);
         }
         break;
 
+      case "confirm":
+        if (this.conversationState.step === "confirmService") {
+          botResponse = this.getRandomResponse(this.responses.askingTime, context);
+          nextStep = "askingTime";
+        } else {
+          botResponse = this.getRandomResponse(this.responses.invalidInput);
+        }
+        break;
+
+      case "reject":
+        if (this.conversationState.step === "confirmService") {
+          this.conversationState.data.service = null;
+          botResponse = this.getRandomResponse(this.responses.askingService, context);
+          nextStep = "askingService";
+        } else {
+          botResponse = this.getRandomResponse(this.responses.invalidInput);
+        }
+        break;
+
       case "datetime":
-        if (
-          this.conversationState.step === "askingTime" ||
-          this.conversationState.step === "confirmService"
-        ) {
+        if (this.conversationState.step === "askingTime" || this.conversationState.step === "confirmService") {
           this.conversationState.data.date = userText;
-          botResponse = this.getRandomResponse(
-            this.responses.askingContact,
-            context
-          );
+          botResponse = this.getRandomResponse(this.responses.askingContact, context);
           nextStep = "askingContact";
         } else {
           botResponse = this.getRandomResponse(this.responses.invalidDateTime);
         }
+        break;
+
+      case "pastDateTime":
+        botResponse = this.getRandomResponse(this.responses.pastDateTime);
+        break;
+
+      case "invalidTime":
+        botResponse = this.getRandomResponse(this.responses.invalidTime);
         break;
 
       case "contact":
@@ -314,19 +470,10 @@ export class Chatbot {
           if (name && email && this.validateEmail(email)) {
             this.conversationState.data.name = name;
             this.conversationState.data.email = email;
-            botResponse = this.getRandomResponse(this.responses.success, {
-              name,
-              email,
-            });
+            botResponse = this.getRandomResponse(this.responses.success, { ...context, name, email });
             console.log("Lead capturado:", this.conversationState.data);
             nextStep = "initial";
-            this.conversationState.data = {
-              service: null,
-              date: null,
-              time: null,
-              name: null,
-              email: null,
-            };
+            this.conversationState.data = { service: null, date: null, time: null, name: null, email: null };
           } else {
             botResponse = this.getRandomResponse(this.responses.invalidContact);
           }
@@ -335,7 +482,7 @@ export class Chatbot {
         }
         break;
 
-      case "unknown":
+      default:
         botResponse = this.getRandomResponse(this.responses.invalidInput);
         break;
     }
@@ -349,9 +496,7 @@ export class Chatbot {
       if (e.key === "Enter") this.sendMessage();
     });
     this.sendButton?.addEventListener("click", () => this.sendMessage());
-    this.toggleButtonElement?.addEventListener("click", () =>
-      this.toggleChatbot()
-    );
+    this.toggleButtonElement?.addEventListener("click", () => this.toggleChatbot());
     this.closeButton?.addEventListener("click", () => this.toggleChatbot());
   }
 
