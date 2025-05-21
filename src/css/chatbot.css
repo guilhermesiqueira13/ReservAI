@@ -51,12 +51,14 @@
   justify-content: center;
   align-items: center;
   background: var(--primary-color);
-  color: var(--button-text);
   padding: 12px 15px;
   border-radius: 10px 10px 0 0;
   text-align: center;
-  font-family: "Poppins-medium";
-  font-size: 1rem;
+  font-family: "Poppins-Regular";
+  font-size: 0.9375rem;
+}
+.chatbot-header-title {
+  color: var(--button-text);
 }
 .chatbot-close-btn {
   position: absolute;
@@ -155,7 +157,7 @@
   right: 60px;
   top: 0;
   background-color: var(--primary-color);
-  color: var(--button-text);
+  color: var(--text-color);
   padding: 10px 15px;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
