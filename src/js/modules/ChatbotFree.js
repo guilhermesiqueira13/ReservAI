@@ -10,224 +10,410 @@ export class Chatbot {
   responses = {
     initial: [
       (context) =>
-        `${context.greeting}, tudo certo, ${
-          context.name || ""
-        }? Sou o ReservAI, seu assistente virtual! O que você gostaria de fazer hoje?`,
-      (context) =>
-        `${context.greeting}! Tô aqui pra te ajudar, ${
-          context.name || "amigo(a)"
-        }. O que você quer fazer?`,
-      (context) =>
-        `${context.greeting}, e aí, ${
+        `${context.greeting || "Oi"}, e aí, ${
           context.name || "tudo bem"
-        }? Sou o ReservAI, seu bot de agendamentos. Bora marcar algo?`,
+        }? Sou o ReservAI, seu parceiro pra agendamentos! 😄 O que você quer fazer hoje?`,
+      (context) =>
+        `${context.greeting || "Olá"}! Tô pronto pra te ajudar, ${
+          context.name || "amigo(a)"
+        }. Bora agendar algo ou tirar alguma dúvida?`,
+      (context) =>
+        `${context.greeting || "E aí"}, ${
+          context.name || ""
+        }? Aqui é o ReservAI! Me conta, quer marcar um horário ou precisa de outra coisa? 😊`,
+      (context) =>
+        `${context.greeting || "Oi"}, ${
+          context.name || "tudo joia"
+        }? Sou o ReservAI, seu assistente de agendamentos. Qual é o plano?`,
     ],
     askingService: [
       (context) =>
-        `${context.greeting}, perfeito, ${
+        `Beleza, ${
           context.name || ""
-        }! Sou o ReservAI, seu bot de agendamentos. Qual serviço você quer agendar?`,
+        }! Qual serviço você quer agendar hoje? 😊 Por exemplo, consulta médica, corte de cabelo, ou algo assim!`,
       (context) =>
-        `${context.greeting}, ${
+        `${context.greeting || "Opa"}, ${
           context.name || "amigo(a)"
-        }! Tô aqui pra te ajudar. Me diz qual é o serviço que você deseja marcar.`,
+        }! Me fala qual serviço você tá querendo marcar, tipo massagem, exame, ou outro.`,
       (context) =>
-        `show! Agora me conta: qual serviço você está procurando, ${
+        `Show de bola, ${
+          context.name || ""
+        }! 😄 Qual é o serviço que você quer agendar? Me dá uma luz!`,
+      (context) =>
+        `Tô pronto pra te ajudar, ${
           context.name || "amigo(a)"
-        }?`,
+        }! Qual serviço você tá pensando em marcar? Conta aí!`,
     ],
     askingTime: [
       (context) =>
-        `Show, ${context || "você"}! Você quer ${
-          context.service ? `${context.service}` : "um serviço"
-        }. E quando você quer marcar? Me fala o dia e horário, tipo 'amanhã de manhã' ou 'sexta à tarde'.`,
+        `Perfeito, ${context.name || ""}! Você quer ${
+          context.service || "um serviço"
+        }. Quando fica bom pra você? Pode mandar algo como "amanhã às 10h" ou "sexta de tarde". 😊`,
       (context) =>
-        `Beleza, ${context || "amigo(a)"}! Você escolheu ${
-          context.service ? `${context.service}` : "um serviço"
-        }. Agora, me diz o dia e horário que você prefere, como 'próxima quarta às 14h'.`,
+        `Beleza, ${context.name || "amigo(a)"}! Escolheu ${
+          context.service || "o serviço"
+        }. Me diz o dia e horário, tipo "quarta às 14h" ou "próxima semana de manhã".`,
       (context) =>
-        `Entendido, ${context || "você"}! Qual dia e horário fica bom pra ${
-          context.service ? `${context.service}` : "o serviço"
-        }? Pode ser algo como 'daqui a 2 dias às 10h'.`,
+        `Show, ${context.name || ""}! Pra ${
+          context.service || "o serviço"
+        }, qual dia e horário rola? Exemplo: "hoje às 16h" ou "próximo sábado às 9h".`,
+      (context) =>
+        `Entendido, ${context.name || "você"}! 😄 Quando quer marcar ${
+          context.service || "esse serviço"
+        }? Joga aí um dia e horário, tipo "amanhã cedo".`,
     ],
     askingContact: [
       (context) =>
-        `Quase lá, ${context || "você"}! Pra confirmar o agendamento de ${
+        `Quase na reta final, ${
+          context.name || ""
+        }! 😊 Pra confirmar o agendamento de ${
           context.service || "seu serviço"
         } em ${
           context.date || "seu horário"
-        }, preciso do seu nome completo e e-mail.`,
+        }, me passa seu nome completo e e-mail, por favor.`,
       (context) =>
-        `Falta pouco, ${
-          context || "amigo(a)"
-        }! Por favor, me informe seu nome e e-mail pra gente confirmar ${
+        `Falta só um detalhe, ${
+          context.name || "amigo(a)"
+        }! 😄 Me manda seu nome completo e e-mail pra garantir o agendamento de ${
           context.service || "o serviço"
         } em ${context.date || "seu horário"}.`,
       (context) =>
-        `Pra finalizar, ${
+        `Tô quase confirmando, ${
           context.name || ""
-        }! Só preciso do seu nome e e-mail pra confirmar o agendamento de ${
+        }! Só preciso do seu nome completo e e-mail pra fechar o agendamento de ${
           context.service || "seu serviço"
         }.`,
+      (context) =>
+        `Ótimo, ${context.name || "você"}! Pra finalizar o agendamento de ${
+          context.service || "o serviço"
+        } em ${
+          context.date || "seu horário"
+        }, é só me passar seu nome e e-mail! 😊`,
     ],
     success: [
       (context) =>
-        `Feito, ${context.name}! ✅ Seu agendamento de ${context.service} para ${context.date} foi encaminhado. Confere o ${context.email} que logo tem novidade!`,
+        `Prontinho, ${context.name || "você"}! ✅ Seu agendamento de ${
+          context.service
+        } para ${context.date} tá confirmado! Fica de olho no ${
+          context.email
+        } que a confirmação chega rapidinho. 😊`,
       (context) =>
-        `Agendamento confirmado, ${context.name}! 🎉 Você marcou ${context.service} para ${context.date}. Fique de olho no seu e-mail ${context.email} para os próximos passos.`,
+        `Deu tudo certo, ${context.name || "amigo(a)"}! 🎉 O agendamento de ${
+          context.service
+        } pra ${context.date} tá na mão. Checa o ${
+          context.email
+        } pra mais detalhes!`,
       (context) =>
-        `Show, ${context.name}! Tudo certinho. Seu ${context.service} está agendado para ${context.date}. Checa o ${context.email} que já já chega a confirmação!`,
+        `Show, ${context.name || ""}! Seu ${context.service} tá agendado pra ${
+          context.date
+        }. 😄 A confirmação já tá indo pro seu e-mail: ${context.email}.`,
+      (context) =>
+        `Agendamento na conta, ${context.name || "você"}! 🥳 ${
+          context.service
+        } marcado pra ${context.date}. Dá uma olhada no ${
+          context.email
+        } pra confirmar!`,
     ],
     invalidInput: [
       (context) =>
-        `Ops, não entendi, ${
+        `Ops, não saquei o que você quis dizer, ${
           context.name || ""
-        }! 😕 Tente 'agendar', 'marcar' ou 'quero agendar', ou me conta direitinho o que você quer fazer!`,
+        }! 😅 Tente algo como "agendar", "marcar" ou me explica direitinho o que você quer!`,
       (context) =>
-        `Hmm, parece que não saquei essa, ${
+        `Eita, não entendi essa, ${
           context.name || "amigo(a)"
-        }Tente usar termos como 'agendamento', 'quero marcar' ou 'reservar', ou explique de outro jeito.`,
+        }! 😕 Pode mandar algo como "quero agendar" ou "marcar consulta" pra eu te ajudar?`,
       (context) =>
-        `Desculpa, não consegui compreender, ${
+        `Hmm, fiquei na dúvida, ${
           context.name || ""
-        } Que tal começar com 'agendar' ou 'quero fazer um agendamento' para eu te ajudar?`,
+        }! 😜 Tenta dizer "agendar" ou explicar com outras palavras que eu te acompanho!`,
+      (context) =>
+        `Vish, não captei, ${
+          context.name || "amigo(a)"
+        }! 😄 Me dá uma ajuda e fala algo como "quero marcar" ou "agendamento".`,
     ],
     invalidContact: [
       (context) =>
-        `Esse contato parece incompleto ou incorreto, ${
+        `Parece que o nome ou e-mail tá com algum problema, ${
           context.name || ""
-        }. 🤔 Por favor, me informe seu nome e e-mail novamente. Ex: *João Silva, joao.silva@email.com*.`,
+        }. 😕 Tenta de novo, tipo: "João Silva, joao.silva@email.com".`,
       (context) =>
-        `Ops, o formato do nome ou e-mail está inválido, ${
+        `Ops, algo no contato não bateu, ${
           context.name || "amigo(a)"
-        }Tente de novo, como: *Maria Souza, maria.souza@provedor.com*.`,
+        }! 😅 Me passa seu nome completo e e-mail novamente, como "Maria Souza, maria@email.com".`,
       (context) =>
         `Não consegui validar o contato, ${
           context.name || ""
-        }Poderia me passar seu nome e e-mail novamente, por favor?`,
+        }. 😊 Por favor, me manda nome e e-mail certinhos, tipo "Ana Lima, ana.lima@email.com".`,
+      (context) =>
+        `Eita, o contato não tá ok, ${
+          context.name || "você"
+        }! 😜 Tenta mandar seu nome e e-mail de novo, por exemplo: "Pedro Santos, pedro@email.com".`,
     ],
     invalidDateTime: [
       (context) =>
-        `Hmm, não consegui entender essa data ou horário, ${
+        `Hmm, essa data ou horário tá meio confuso, ${
           context.name || ""
-        }. 🗓️ Tente algo como 'amanhã de manhã', 'sexta à tarde' ou '25/05 às 14h'. Como você gostaria de agendar?`,
+        }. 🗓️ Tenta dizer algo como "amanhã às 10h" ou "sexta de manhã". Qual é o melhor pra você?`,
       (context) =>
-        `Ops, não entendi o dia ou horário que você mencionou, ${
+        `Não consegui entender esse horário, ${
           context.name || "amigo(a)"
-        }. 😕 Que tal tentar 'próxima quarta às 10h' ou 'daqui a 2 dias às 15h'?`,
+        }! 😕 Que tal "próxima quarta às 14h" ou "hoje à tarde"? Me dá uma luz!`,
       (context) =>
-        `Eita, acho que esse formato de data/hora não funcionou, ${
+        `Eita, essa data não rolou, ${
           context.name || ""
-        }Pode dizer algo como 'hoje às 16h' ou 'próxima semana na quinta de manhã'?`,
+        }! 😅 Tenta algo como "25/05 às 15h" ou "próximo sábado de manhã". Qual você prefere?`,
+      (context) =>
+        `Ops, não captei a data/horário, ${
+          context.name || "você"
+        }! 😄 Me fala algo como "quinta às 16h" ou "amanhã cedo" pra eu te ajudar!`,
     ],
     pastDateTime: [
       (context) =>
-        `Essa data/hora já passou, ${
+        `Vish, essa data já passou, ${
           context.name || ""
-        }! 🕰️ Me fala uma data de hoje ou no futuro, tipo 'hoje às 14h' ou 'amanhã de manhã'.`,
+        }! 😅 Me diz uma data de hoje ou do futuro, tipo "hoje às 14h" ou "amanhã de manhã".`,
       (context) =>
-        `Não dá pra agendar no passado, ${
+        `Não rola agendar no passado, ${
           context.name || "amigo(a)"
-        }! Tente uma data no presente ou futuro, como 'próxima sexta à tarde' ou 'daqui a 2 dias às 15h'.`,
+        }! 🕰️ Tenta uma data atual, como "quarta às 10h" ou "próxima semana à tarde".`,
       (context) =>
-        `Essa data já foi, ${
+        `Essa data já era, ${
           context.name || ""
-        }! Me informa uma data atual ou futura, por favor. Ex: 'quarta-feira às 12h' ou 'amanhã às 16h'.`,
+        }! 😜 Me fala um dia de hoje pra frente, tipo "sexta às 15h" ou "amanhã às 9h".`,
+      (context) =>
+        `Eita, não dá pra marcar no passado, ${
+          context.name || "você"
+        }! 😄 Joga uma data futura, como "hoje às 16h" ou "próxima quinta de manhã".`,
     ],
     invalidTime: [
       (context) =>
-        `Ops, esse horário não rola, ${
+        `Ops, esse horário não tá dentro do nosso expediente (8h às 18h), ${
           context.name || ""
-        }! Nosso atendimento é das 8h às 18h. Tente algo como 'amanhã às 14h' ou 'sexta às 9h'.`,
+        }! 😕 Tenta algo como "amanhã às 14h" ou "sexta às 10h".`,
       (context) =>
         `Vish, fora do horário comercial, ${
           context.name || "amigo(a)"
-        }! ⏰ Marca entre 8h e 18h, tipo 'próxima quarta às 15h' ou 'hoje às 10h'.`,
+        }! ⏰ Nosso atendimento é das 8h às 18h. Que tal "quarta às 15h" ou "hoje às 9h"?`,
       (context) =>
-        `Eita, não consigo agendar nesse horário, ${
+        `Eita, esse horário não rola, ${
           context.name || ""
-        }! Nosso horário é das 8h às 18h. Que tal 'amanhã de manhã' ou 'quinta à tarde'?`,
+        }! 😅 Funcionamos das 8h às 18h. Tenta "amanhã de manhã" ou "sexta à tarde".`,
+      (context) =>
+        `Não dá pra marcar nesse horário, ${
+          context.name || "você"
+        }! 😜 Nosso expediente é das 8h às 18h. Que tal "hoje às 16h" ou "quinta às 12h"?`,
     ],
     confirmService: [
       (context) =>
-        `Entendi: você quer ${context.service || "um serviço"}, certo, ${
-          context.name || ""
-        }? Me diga 'sim' para confirmar ou o nome de outro serviço se eu entendi errado.`,
-      (context) =>
-        `Confirmando: ${context.service || "esse serviço"}? É isso mesmo, ${
-          context.name || "amigo(a)"
-        }? Se não, por favor, me diga qual serviço você quer.`,
-      (context) =>
-        `Ok, ${context.name || ""}! Você escolheu ${
+        `Beleza, ${context.name || ""}! Você quer agendar ${
           context.service || "esse serviço"
-        }. Está correto? Se não for, pode me falar outro serviço.`,
+        }, tá certo? 😊 Confirme ou me diz outro serviço se eu errei.`,
+      (context) =>
+        `Tô conferindo: é ${context.service || "esse serviço"} mesmo, ${
+          context.name || "amigo(a)"
+        }? 😄Confirme para seguir ou corrige se for outro serviço.`,
+      (context) =>
+        `Ok, ${context.name || ""}! Escolheu ${
+          context.service || "um serviço"
+        }. Confirma para processeguir ou me fala se é outro serviço!`,
+      (context) =>
+        `Entendi, ${context.name || "você"}! É ${
+          context.service || "esse serviço"
+        }? 😊 Se tá ok, é só confirmar. Se não, me conta o serviço certo.`,
     ],
     back: [
       (context) =>
-        `Sem problemas, ${
-          context.name || ""
-        }! Voltamos um passo. O que você gostaria de fazer agora?`,
-      (context) =>
         `Tranquilo, ${
+          context.name || ""
+        }! 😊 Vamos voltar um passo. O que você quer fazer agora?`,
+      (context) =>
+        `Sem crise, ${
           context.name || "amigo(a)"
-        }! Podemos rever. Em que posso te ajudar neste momento?`,
+        }! 😄 Voltamos um pouquinho. Me diz como continuo te ajudando!`,
+      (context) =>
+        `Beleza, ${
+          context.name || ""
+        }! 😜 Demos um passo atrás. Qual é o próximo movimento?`,
       (context) =>
         `Ok, ${
-          context.name || ""
-        }! Vamos retroceder. Qual é a sua próxima instrução?`,
+          context.name || "você"
+        }! 😊 Voltamos. Me fala o que você quer agora: agendar, mudar algo ou outra coisa?`,
     ],
     cancel: [
       (context) =>
-        `Agendamento cancelado com sucesso, ${
+        `Tudo bem, ${
           context.name || ""
-        }! Se precisar de algo, é só falar 'agendar' ou 'quero marcar'. 😉`,
+        }! Agendamento cancelado. 😊 Se quiser tentar de novo, é só dizer "agendar" ou "marcar"!`,
       (context) =>
-        `Cancelado, ${
+        `Cancelado com sucesso, ${
           context.name || "amigo(a)"
-        }! Tudo limpo. Quando quiser recomeçar, diga 'agendamento' ou 'quero marcar'.`,
+        }! 😄 Quando quiser, é só falar "quero agendar" que a gente recomeça.`,
       (context) =>
         `Ok, ${
           context.name || ""
-        }! Cancelei o processo. Se mudar de ideia, é só falar 'agendar' novamente!`,
+        }! Cancelei tudo. 😜 Se mudar de ideia, é só dizer "agendar" ou "marcar".`,
+      (context) =>
+        `Feito, ${
+          context.name || "você"
+        }! 😊 Processo cancelado. Se quiser voltar, é só falar "agendar" ou "quero marcar".`,
     ],
     noHistory: [
       (context) =>
-        `Opa, não tem como voltar mais, ${
+        `Opa, já tá no começo, ${
           context.name || ""
-        }! 😅 Estamos no começo. Me diz, quer 'agendar' ou fazer outra coisa?`,
+        }! 😅 Não dá pra voltar mais. Quer "agendar" ou fazer outra coisa?`,
       (context) =>
-        `Eita, já estamos no início, ${
+        `Eita, estamos no ponto zero, ${
           context.name || "amigo(a)"
-        }! 😜 Bora começar de novo? Fala 'agendar' ou 'marcar' pra gente seguir!`,
+        }! 😜 Bora começar? Diz "agendar" ou me conta o que você quer.`,
       (context) =>
-        `Sem histórico pra voltar, ${
+        `Sem mais pra voltar, ${
           context.name || ""
-        }! 😛 Que tal começar com 'quero agendar' ou 'marcar'?`,
+        }! 😄 Tô pronto pra começar do zero. Fala "agendar" ou outra coisa que você precisa!`,
+      (context) =>
+        `Já estamos no início, ${
+          context.name || "você"
+        }! 😊 Quer "marcar" algo ou tem outra ideia? Me conta!`,
     ],
     help: [
       (context) =>
-        `Claro, ${
+        `Sem problemas, ${
           context.name || ""
-        }! Estou aqui pra te ajudar. 😊 Você pode dizer 'agendar', 'marcar' ou pedir ajuda com algo específico. O que você precisa?`,
+        }! 😊 Sou o ReservAI e posso te ajudar com agendamentos, dúvidas ou qualquer coisa. Tenta dizer "agendar", "marcar" ou me explica o que você precisa!`,
       (context) =>
         `Beleza, ${
           context.name || "amigo(a)"
-        }! Posso te ajudar com agendamentos ou dúvidas. Tente 'quero agendar' ou me diga o que você quer saber.`,
+        }! 😄 Tô aqui pra te guiar. Quer agendar algo? É só dizer "quero agendar". Ou me conta o que tá rolando!`,
       (context) =>
-        `Sem problema, ${
+        `Tranquilo, ${
           context.name || ""
-        }! Me fala o que você precisa: 'agendar', 'cancelar' ou qualquer dúvida que tenha!`,
+        }! 😜 Posso te ajudar com agendamentos ou tirar dúvidas. Fala "agendar" ou me diz o que você quer saber.`,
+      (context) =>
+        `Tô aqui pra te salvar, ${
+          context.name || "você"
+        }! 😊 Quer marcar um horário? Diz "agendar". Ou me conta o que tá precisando!`,
+    ],
+    checkAvailability: [
+      (context) =>
+        `Ok, ${context.name || ""}! 😊 Vou checar a disponibilidade pra ${
+          context.service || "o serviço"
+        } em ${
+          context.date || "seu horário"
+        }. Me confirma o serviço e a data/hora, por favor!`,
+      (context) =>
+        `Beleza, ${
+          context.name || "amigo(a)"
+        }! 😄 Quer saber se tem horário pra ${
+          context.service || "um serviço"
+        }? Me diz o dia e hora, tipo "amanhã às 14h".`,
+      (context) =>
+        `Tô verificando pra você, ${
+          context.name || ""
+        }! 😊 Qual serviço e quando você tá pensando? Exemplo: "corte de cabelo amanhã às 10h".`,
+    ],
+    reschedule: [
+      (context) =>
+        `Sem crise, ${context.name || ""}! 😊 Quer mudar o agendamento de ${
+          context.service || "seu serviço"
+        }? Me fala a nova data e horário, tipo "quarta às 15h".`,
+      (context) =>
+        `Ok, ${
+          context.name || "amigo(a)"
+        }! 😄 Vamos reagendar. Qual o novo dia e horário pra ${
+          context.service || "o serviço"
+        }? Exemplo: "próxima sexta às 9h".`,
+      (context) =>
+        `Tranquilo, ${
+          context.name || ""
+        }! 😜 Me diz a nova data e horário pro agendamento de ${
+          context.service || "seu serviço"
+        }, como "amanhã às 16h".`,
+    ],
+    confirmReschedule: [
+      (context) =>
+        `Feito, ${context.name || "você"}! ✅ O agendamento de ${
+          context.service
+        } foi alterado pra ${context.date}. Confere o ${
+          context.email
+        } pra mais detalhes! 😊`,
+      (context) =>
+        `Reagendamento confirmado, ${context.name || "amigo(a)"}! 🎉 Seu ${
+          context.service
+        } agora é em ${context.date}. Fica de olho no ${context.email}!`,
+      (context) =>
+        `Tudo certo, ${context.name || ""}! 😄 O ${
+          context.service
+        } tá marcado pra ${context.date}. A confirmação vai pro ${
+          context.email
+        }.`,
+    ],
+    noAvailability: [
+      (context) =>
+        `Putz, ${context.name || ""}! 😕 Não temos vaga pra ${
+          context.service || "esse serviço"
+        } em ${
+          context.date || "esse horário"
+        }. Tenta outro horário, tipo "amanhã às 15h" ou "sexta de manhã".`,
+      (context) =>
+        `Ops, ${context.name || "amigo(a)"}! 😅 O horário pra ${
+          context.service || "o serviço"
+        } em ${
+          context.date || "essa data"
+        } tá cheio. Que tal outro dia, como "quarta às 10h"?`,
+      (context) =>
+        `Eita, ${context.name || ""}! 😜 Não tem disponibilidade pra ${
+          context.service || "seu serviço"
+        } em ${
+          context.date || "esse horário"
+        }. Me diz outro horário, tipo "próximo sábado às 14h".`,
+    ],
+    thankYou: [
+      (context) =>
+        `Por nada, ${
+          context.name || "você"
+        }! 😊 Fico feliz em ajudar. Qualquer coisa, é só chamar!`,
+      (context) =>
+        `De boa, ${
+          context.name || "amigo(a)"
+        }! 😄 Tô aqui pra qualquer dúvida ou agendamento. Bora?`,
+      (context) =>
+        `Valeu pelo "obrigado", ${
+          context.name || ""
+        }! 😜 Sempre que precisar, é só me chamar!`,
+      (context) =>
+        `Imagina, ${
+          context.name || "você"
+        }! 😊 Foi um prazer te ajudar. Se precisar de mais algo, é só dar um grito!`,
+    ],
+    // Nova categoria de respostas para explicar o bot
+    botExplanation: [
+      (context) =>
+        `Olá, ${
+          context.name || "amigo(a)"
+        }! Sou o ReservAI, seu assistente de agendamentos. Minha principal função é facilitar o agendamento e reagendamento automático de serviços para você.`,
+      (context) =>
+        `E aí, ${
+          context.name || "você"
+        }! O ReservAI foi criado para otimizar seus agendamentos. Eu cuido do agendamento automático de novos serviços e também do reagendamento automático, caso precise mudar algo.`,
+      (context) =>
+        `Oi, ${
+          context.name || "tudo bem"
+        }! Basicamente, eu sou um bot de agendamento e reagendamento automático. Você me diz o que precisa, e eu faço o resto!`,
+      (context) =>
+        `Sou o ReservAI, seu parceiro para agendamentos! Minha especialidade é o agendamento automático de diversos serviços e também o reagendamento automático, para que você tenha total flexibilidade.`,
     ],
   };
 
   config = {
     scrollThreshold: 200,
-    ctaDelayTime: 5000,
-    messageProcessDelay: 800,
-    typingIndicatorDelay: 400,
+    ctaDelayTime: 4000,
+    messageProcessDelay: 600,
+    typingIndicatorDelay: 300,
     maxHistorySteps: 5,
     businessHours: { start: 8, end: 18 },
-    confidenceThreshold: 0.7,
+    fallbackIntent: "invalidInput",
+    maxRetries: 3,
   };
 
   trainingData = [
@@ -236,8 +422,6 @@ export class Chatbot {
     { text: "quero agendar", intent: "start" },
     { text: "quero um agendamento", intent: "start" },
     { text: "quero agendamento", intent: "start" },
-    { text: "boa tarde", intent: "start" },
-    { text: "quero agendar", intent: "start" },
     { text: "marcar", intent: "start" },
     { text: "quero marcar", intent: "start" },
     { text: "fazer agendamento", intent: "start" },
@@ -254,10 +438,22 @@ export class Chatbot {
     { text: "agendarr", intent: "start" },
     { text: "marcarrr", intent: "start" },
     { text: "quero um horario", intent: "start" },
+    { text: "bora agendar", intent: "start" },
+    { text: "vamos marcar", intent: "start" },
     { text: "oi", intent: "greeting" },
     { text: "olá", intent: "greeting" },
     { text: "bom dia", intent: "greeting" },
     { text: "boa tarde", intent: "greeting" },
+    { text: "boa tarde, tudo bem?", intent: "greeting" },
+    { text: "boa tarde, td bem?", intent: "greeting" },
+    { text: "boa tarde tudo bem?", intent: "greeting" },
+    { text: "boa tarde tdb?", intent: "greeting" },
+    { text: "boa tarde td bem?", intent: "greeting" },
+    { text: "boa tarde, tudo bem?", intent: "greeting" },
+    { text: "boa tarde, td bem", intent: "greeting" },
+    { text: "boa tarde tudo bem", intent: "greeting" },
+    { text: "boa tarde tdb", intent: "greeting" },
+    { text: "boa tarde td bem", intent: "greeting" },
     { text: "boa noite", intent: "greeting" },
     { text: "e aí", intent: "greeting" },
     { text: "tudo bem", intent: "greeting" },
@@ -267,6 +463,9 @@ export class Chatbot {
     { text: "oi tudo de boa", intent: "greeting" },
     { text: "alô", intent: "greeting" },
     { text: "e ae", intent: "greeting" },
+    { text: "tudo jóia", intent: "greeting" },
+    { text: "oiê", intent: "greeting" },
+    { text: "fala tu", intent: "greeting" },
     { text: "sim", intent: "confirm" },
     { text: "ok", intent: "confirm" },
     { text: "confirmo", intent: "confirm" },
@@ -281,6 +480,12 @@ export class Chatbot {
     { text: "exato", intent: "confirm" },
     { text: "show", intent: "confirm" },
     { text: "tá de boa", intent: "confirm" },
+    { text: "tá ok", intent: "confirm" },
+    { text: "blz", intent: "confirm" },
+    { text: "esta certo", intent: "confirm" },
+    { text: "esta correto", intent: "confirm" },
+    { text: "está certo", intent: "confirm" },
+    { text: "está correto", intent: "confirm" },
     { text: "não", intent: "reject" },
     { text: "n", intent: "reject" },
     { text: "não quero", intent: "reject" },
@@ -292,12 +497,17 @@ export class Chatbot {
     { text: "trocado", intent: "reject" },
     { text: "quero mudar", intent: "reject" },
     { text: "não é assim", intent: "reject" },
+    { text: "nao", intent: "reject" },
+    { text: "outro serviço", intent: "reject" },
+    { text: "tá errado", intent: "reject" },
     { text: "voltar", intent: "back" },
     { text: "retroceder", intent: "back" },
     { text: "volta", intent: "back" },
     { text: "passo anterior", intent: "back" },
     { text: "volta um pouco", intent: "back" },
     { text: "voltar atrás", intent: "back" },
+    { text: "vouta", intent: "back" },
+    { text: "quero voltar", intent: "back" },
     { text: "cancelar", intent: "cancel" },
     { text: "desistir", intent: "cancel" },
     { text: "parar", intent: "cancel" },
@@ -306,6 +516,8 @@ export class Chatbot {
     { text: "quero parar", intent: "cancel" },
     { text: "deixa pra lá", intent: "cancel" },
     { text: "abandonar", intent: "cancel" },
+    { text: "canselar", intent: "cancel" },
+    { text: "desisto", intent: "cancel" },
     { text: "ajuda", intent: "help" },
     { text: "me ajuda", intent: "help" },
     { text: "como faço", intent: "help" },
@@ -316,6 +528,55 @@ export class Chatbot {
     { text: "como marcar", intent: "help" },
     { text: "to perdido", intent: "help" },
     { text: "nao sei como fazer", intent: "help" },
+    { text: "tô confuso", intent: "help" },
+    { text: "explica aí", intent: "help" },
+    { text: "tem horário disponível", intent: "checkAvailability" },
+    { text: "tem vaga pra amanhã", intent: "checkAvailability" },
+    { text: "quais horários livres", intent: "checkAvailability" },
+    { text: "tem horário pra consulta", intent: "checkAvailability" },
+    { text: "verificar disponibilidade", intent: "checkAvailability" },
+    { text: "tem vaga", intent: "checkAvailability" },
+    { text: "quais os horários", intent: "checkAvailability" },
+    { text: "reagendar", intent: "reschedule" },
+    { text: "quero mudar o horário", intent: "reschedule" },
+    { text: "mudar agendamento", intent: "reschedule" },
+    { text: "trocar horário", intent: "reschedule" },
+    { text: "reagendar consulta", intent: "reschedule" },
+    { text: "muda o dia", intent: "reschedule" },
+    { text: "quero outro horário", intent: "reschedule" },
+    { text: "reagendamento", intent: "reschedule" },
+    { text: "confirmar reagendamento", intent: "confirmReschedule" },
+    { text: "tá ok o novo horário", intent: "confirmReschedule" },
+    { text: "pode mudar pra esse dia", intent: "confirmReschedule" },
+    { text: "confirmo a troca", intent: "confirmReschedule" },
+    { text: "novo horário tá bom", intent: "confirmReschedule" },
+    { text: "sem horário", intent: "noAvailability" },
+    { text: "não tem vaga", intent: "noAvailability" },
+    { text: "obrigado", intent: "thankYou" },
+    { text: "muito obrigado", intent: "thankYou" },
+    { text: "valeu", intent: "thankYou" },
+    { text: "brigado", intent: "thankYou" },
+    { text: "obg", intent: "thankYou" },
+    { text: "obrigada", intent: "thankYou" },
+    { text: "muito obrigada", intent: "thankYou" },
+    { text: "vlw", intent: "thankYou" },
+    { text: "agradeço", intent: "thankYou" },
+    { text: "tks", intent: "thankYou" },
+    { text: "obrigadoo", intent: "thankYou" },
+    { text: "valeu demais", intent: "thankYou" },
+    { text: "brigadão", intent: "thankYou" },
+    { text: "obrigado pela ajuda", intent: "thankYou" },
+    { text: "valeu pela força", intent: "thankYou" },
+    { text: "tchau", intent: "goodbye" },
+    { text: "até mais", intent: "goodbye" },
+    { text: "valeu e tchau", intent: "goodbye" },
+    { text: "flw", intent: "goodbye" },
+    { text: "até logo", intent: "goodbye" },
+    { text: "tô de saída", intent: "goodbye" },
+    { text: "xau", intent: "goodbye" },
+    { text: "verificar agendamento", intent: "checkStatus" },
+    { text: "como tá meu agendamento", intent: "checkStatus" },
+    { text: "status da consulta", intent: "checkStatus" },
   ];
 
   constructor(toggleSelector, chatbotSelector) {
@@ -323,7 +584,7 @@ export class Chatbot {
       step: Chatbot.STATES.INITIAL,
       data: { service: null, date: null, time: null, name: null, email: null },
       history: [],
-      hasWelcomed: false, // Esta flag é a chave para o comportamento desejado
+      hasWelcomed: false,
       contextTopic: null,
     };
 
@@ -959,9 +1220,9 @@ export class Chatbot {
         response: "askingService",
         nextState: Chatbot.STATES.ASKING_SERVICE,
       },
-      greeting: { response: "greeting", nextState: Chatbot.STATES.INITIAL }, // Mantém o estado inicial para saudações
+      greeting: { response: "greeting", nextState: Chatbot.STATES.INITIAL },
       help: { response: "help", nextState: Chatbot.STATES.INITIAL },
-      back: { response: "noHistory", nextState: Chatbot.STATES.INITIAL }, // "noHistory" já que não há para onde voltar do inicial
+      back: { response: "noHistory", nextState: Chatbot.STATES.INITIAL },
       cancel: { response: "cancel", nextState: Chatbot.STATES.INITIAL },
       default: { response: "invalidInput", nextState: Chatbot.STATES.INITIAL },
     },
@@ -996,12 +1257,12 @@ export class Chatbot {
         response: "askingService",
         nextState: Chatbot.STATES.ASKING_SERVICE,
         clearData: ["service"],
-      }, // Permite ao usuário escolher outro serviço
+      },
       service: {
         response: "confirmService",
         nextState: Chatbot.STATES.CONFIRM_SERVICE,
         saveData: (text) => ({ service: text }),
-      }, // Se o usuário digitar outro serviço diretamente
+      },
       back: {
         response: "back",
         nextState: Chatbot.STATES.ASKING_SERVICE,

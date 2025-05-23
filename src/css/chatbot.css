@@ -59,7 +59,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: var(--primary-color);
+  background: var(--highlight-gradient);
   padding: 12px 15px;
   border-radius: 10px 10px 0 0;
   text-align: center;
@@ -105,6 +105,7 @@
   word-wrap: break-word;
   line-height: 1.4;
   transition: transform 0.3s ease-in-out;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
 }
 .chatbot-message div:hover {
   transform: translateY(-2px);
