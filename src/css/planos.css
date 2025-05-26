@@ -76,16 +76,49 @@
 }
 
 .plano-button {
-  font-family: "Poppins-medium";
-  font-size: 1rem;
-  padding: 14px 28px;
+  font-family: "Poppins-regular";
+  display: inline-block;
+  background-color: var(--button-color);
+  color: var(--button-text);
+  padding: 14px 24px;
   margin-bottom: 30px;
-  background-color: transparent;
-  border: 1px solid var(--button-color);
-  color: var(--text-color);
   border-radius: 12px;
+  font-size: 1.1rem;
+  text-align: center;
+  text-decoration: none;
   transition: background-color 0.3s ease;
   cursor: pointer;
+  border: none;
+}
+.plano-button {
+  font-family: "Poppins-regular";
+  display: inline-block;
+  background-color: transparent;
+  color: var(--button-color);
+  padding: 14px 24px;
+  margin-bottom: 30px;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+  border: 1px solid var(--button-color);
+}
+.plano-button.premium {
+  font-family: "Poppins-regular";
+  display: inline-block;
+  background-color: var(--button-color);
+  color: var(--button-text);
+  padding: 14px 24px;
+  margin-bottom: 30px;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+  border: none;
 }
 .plano-button:hover {
   background-color: var(--primary-color);

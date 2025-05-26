@@ -1,0 +1,86 @@
+.signup-container {
+  display: flex;
+  height: 100vh;
+  flex-wrap: wrap;
+}
+.signup-left {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  flex: 1;
+  min-width: 300px;
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.signup-right {
+  flex: 1;
+  background-color: var(--background-color);
+  padding: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.signup-right-card {
+  padding: 50px;
+  background: var(--card-color);
+  border-radius: 12px;
+  box-shadow: var(--card-box-shadow);
+  width: 100%;
+  max-width: 450px;
+}
+.form-description {
+  font-family: "Poppins-regular";
+  font-size: 1.125rem;
+  text-align: center;
+  margin-bottom: 10px;
+}
+#message {
+  padding: 8px;
+}
+form {
+  display: flex;
+  flex-direction: column;
+}
+form input,
+form select {
+  font-family: "Inter-regular";
+  padding: 14px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.2s;
+}
+form input:focus,
+form select:focus {
+  border-color: var(--primary-color);
+  outline: none;
+}
+#feedback {
+  font-family: "Inter-regular";
+  margin-top: 15px;
+  font-weight: bold;
+  color: green;
+}
+.hidden {
+  display: none;
+}
+.recaptcha-placeholder {
+  font-family: "Inter-regular";
+  font-size: 0.9375rem;
+  margin-bottom: 10px;
+}
+.checkbox-container {
+  font-family: "Inter-regular";
+  font-size: 1rem;
+  margin-top: 5px;
+}
+.checkbox-container a:hover {
+  color: var(--button-color);
+}
+.recaptcha-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

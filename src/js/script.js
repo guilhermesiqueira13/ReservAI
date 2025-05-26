@@ -2,12 +2,14 @@ import { Accordion } from "./modules/FaqAccordion.js";
 import { ToggleButton } from "./modules/ToggleButton.js";
 import { Chatbot } from "./modules/ChatbotFree.js";
 import { ScrollSuave } from "./modules/ScrollSuave.js";
+import { TesteGratis } from "./modules/TesteGratis.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   new Accordion(".accordion-item");
   new ToggleButton();
-  new Chatbot(".chatbot-toggle", "#chatbot");
+  new Chatbot();
   new ScrollSuave(".nav-header ul li a");
+  new TesteGratis("#freeTrialForm", "#feedback");
 
   const headerButton = document.querySelector(".nav-header .button");
   if (headerButton && headerButton.getAttribute("href") === "#") {

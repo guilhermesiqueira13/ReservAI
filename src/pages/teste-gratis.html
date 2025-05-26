@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Teste Grátis - ReservAI</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+
+<body>
+  <header class="container-header">
+    <a href="../../index.html">
+      <img src="../assets/images/logo-reservai.svg" alt="Logotipo do ReservAI" aria-hidden="true">
+    </a>
+    <div class="nav-container">
+      <nav class="nav-header">
+        <ul>
+          <li><a href="../../index.html#beneficios">Beneficíos</a></li>
+          <li><a href="../../index.html#recursos">Recursos</a></li>
+          <li><a href="../../index.html#planos">Planos</a></li>
+          <li><a href="../../index.html#faq">FAQ</a></li>
+        </ul>
+        <a href="#" class="button" aria-label="Experimente o sistema gratuitamente">Experimente Grátis</a>
+      </nav>
+    </div>
+  </header>
+  <div class="signup-container">
+    <div class="signup-left">
+      <h1 class="section-content-title">Ganhe mais Agendamentos com menos Esforço!</h1>
+      <h2 class="section-content-subtitle">Automatize seus agendamentos com inteligência artificial. Sem cartão de crédito.</h2>
+    </div>
+
+    <div class="signup-right">
+      <div class="signup-right-card">
+        <form id="freeTrialForm">
+          <p class="form-description">
+            Complete seus dados abaixo e nossa equipe irá retornar o quanto antes!
+          </p>
+
+          <input type="text" id="name" name="name" placeholder="Seu nome completo" required />
+
+          <input type="email" id="email" name="email" placeholder="E-mail (ex: voce@email.com)" required />
+
+          <input type="tel" id="phone" name="phone" placeholder="Telefone com DDD (ex: 12 91234-5678)" inputmode="tel" pattern="\(?\d{2}\)?[\s-]?\d{4,5}-?\d{4}" required />
+
+          <input type="text" id="company" name="company" placeholder="Nome da sua clínica ou salão" required />
+
+          <select id="serviceType" name="serviceType" required>
+            <option value="">Tipo de serviço</option>
+            <option value="clinica-medica">Clínica Médica</option>
+            <option value="clinica-estetica">Clínica de Estética</option>
+            <option value="barbearia">Barbearia</option>
+            <option value="salao-beleza">Salão de Beleza</option>
+            <option value="outro">Outro</option>
+          </select>
+
+          <textarea id="message" name="message" rows="4" placeholder="Descreva sua necessidade ou dúvidas (opcional)"></textarea>
+
+          <label class="checkbox-container">
+            <input type="checkbox" required />
+            Eu concordo com a <a href="./privacidade.html" target="_blank">Política de Privacidade</a>
+          </label>
+
+          <div class="recaptcha-placeholder">
+            <div>
+              <div class="g-recaptcha" data-sitekey="6LeNH0krAAAAAOPsPp_0CrU9Z9_i2Tix2JUvy1uO"></div>
+            </div>
+          </div>
+
+          <button class="section-content-button" type="submit">ENVIAR</button>
+          <p id="feedback" class="hidden">Inscrição recebida! Em breve entraremos em contato. ✅</p>
+        </form>
+      </div>
+    </div>
+  </div>
+  <footer role="contentinfo">
+    <div class="footer-container">
+      <div class="footer-content">
+        <a href="#" aria-label="Página inicial do ReservAI">
+          <img src="../assets/images/logo-reservai.svg" alt="Logotipo do ReservAI" aria-hidden="true">
+        </a>
+        <div class="social-media" role="navigation" aria-label="Redes sociais">
+          <a href="https://wa.me/5512999999999" aria-label="Contato via WhatsApp">
+            <img src="../assets/images/whatsapp.svg" alt="Ícone do WhatsApp" aria-hidden="true">
+          </a>
+          <a href="https://www.instagram.com/" aria-label="Perfil do Instagram">
+            <img src="../assets/images/Instagram.svg" alt="Ícone do Instagram" aria-hidden="true">
+          </a>
+        </div>
+      </div>
+      <div class="footer-infos">
+        <span>© 2025 ResvarvAI. Todos os direitos reservados.</span>
+        <a href="../pages/termos.html" aria-label="Termos de uso">Termos de uso</a>
+        <a href="../components/privacidade.html" aria-label="Política de privacidade">Privacidade</a>
+      </div>
+    </div>
+  </footer>
+  <script src="../js/script.js" type="module"></script>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</body>
+
+</html>
