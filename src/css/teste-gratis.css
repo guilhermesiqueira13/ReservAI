@@ -1,6 +1,5 @@
 .signup-container {
   display: flex;
-  height: 100vh;
   flex-wrap: wrap;
 }
 .signup-left {
@@ -22,6 +21,7 @@
   justify-content: center;
 }
 .signup-right-card {
+  margin-top: 50px;
   padding: 50px;
   background: var(--card-color);
   border-radius: 12px;
