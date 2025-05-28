@@ -161,12 +161,13 @@
 .plano-card.premium .plano-card-title.premium {
   margin: 25px;
 }
-.plano-card.premium button {
+.plano-card.premium a {
   background-color: var(--button-color);
   color: var(--button-text);
+  transition: background-color 0.2s ease;
   border: none;
 }
-.plano-card.premium button:hover {
+.plano-card.premium a:hover {
   background-color: var(--primary-color);
   color: var(--text-color);
 }
