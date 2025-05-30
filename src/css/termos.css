@@ -52,3 +52,31 @@
   pointer-events: none;
   cursor: default;
 }
+@media (max-width: 480px) {
+  .terms-section-container {
+    margin: 0px 20px 30px 20px; /* Margens menores para celulares */
+  }
+
+  .section-content.terms {
+    margin-top: 30px; /* Reduz o margin-top */
+  }
+
+  .section-content-text,
+  .terms-content-text,
+  .terms-list {
+    font-size: 0.9rem; /* Tamanho de fonte menor para telas muito pequenas */
+  }
+
+  .terms-content-title {
+    font-size: 1rem; /* Tamanho de fonte do título menor */
+  }
+
+  .terms-list li {
+    margin-left: 15px; /* Ajusta o recuo da lista */
+  }
+
+  .terms-list li:before {
+    left: -10px; /* Ajusta a posição do marcador da lista */
+    top: 7px;
+  }
+}

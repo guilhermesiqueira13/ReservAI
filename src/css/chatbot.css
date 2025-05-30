@@ -208,3 +208,100 @@
     border-radius: 0;
   }
 }
+@media (max-width: 768px) {
+  .floating-chatbot {
+    bottom: 15px; /* Ajusta a posição inferior */
+    right: 15px; /* Ajusta a posição direita */
+  }
+
+  .chatbot-container {
+    width: 300px; /* Largura ligeiramente menor para tablets */
+    height: 420px; /* Altura ligeiramente menor */
+  }
+
+  .chatbot-toggle {
+    width: 50px; /* Reduz o tamanho do botão do toggle */
+    height: 50px;
+    font-size: 24px; /* Reduz o tamanho do ícone */
+    margin-bottom: 10px; /* Ajusta a margem inferior */
+  }
+
+  .chatbot-call-to-action {
+    right: 55px; /* Ajusta a posição em relação ao toggle menor */
+    font-size: 0.875rem; /* Fonte ligeiramente menor */
+    padding: 8px 12px; /* Ajusta o padding */
+  }
+}
+
+/* Celulares (max-width: 480px) */
+@media (max-width: 480px) {
+  .floating-chatbot {
+    bottom: 10px; /* Posição mais próxima da borda */
+    right: 10px; /* Posição mais próxima da borda */
+  }
+
+  .chatbot-container {
+    width: calc(100vw - 20px); /* Ocupa quase toda a largura da viewport */
+    height: calc(100vh - 20px); /* Ocupa quase toda a altura da viewport */
+    border-radius: 12px; /* Mantém bordas arredondadas para um visual mais moderno em mobile */
+    /* A regra original para max-width: 400px (100vw/100vh e border-radius: 0) será aplicada para telas ainda menores */
+  }
+
+  .chatbot-header {
+    padding: 10px; /* Reduz padding do cabeçalho */
+    font-size: 0.9rem; /* Reduz tamanho da fonte do cabeçalho */
+  }
+
+  .chatbot-close-btn {
+    right: 10px; /* Ajusta posição do botão de fechar */
+  }
+
+  .chatbot-body {
+    padding: 10px; /* Reduz padding do corpo do chat */
+    font-size: 0.85rem; /* Reduz tamanho da fonte do corpo do chat */
+    gap: 8px; /* Reduz espaçamento entre mensagens */
+  }
+
+  .chat-message {
+    padding: 8px 15px; /* Reduz padding das mensagens */
+    font-size: 0.85rem; /* Reduz tamanho da fonte das mensagens */
+  }
+
+  .chatbot-input {
+    padding: 10px; /* Reduz padding da área de input */
+    gap: 8px; /* Reduz espaçamento no input */
+  }
+
+  .chatbot-input input {
+    padding: 8px 10px; /* Reduz padding do campo de texto */
+    font-size: 0.9rem; /* Reduz tamanho da fonte do campo de texto */
+  }
+
+  .chatbot-input button {
+    padding: 4px 7px; /* Reduz padding do botão de enviar */
+    font-size: 0.75rem; /* Reduz tamanho da fonte do botão de enviar */
+  }
+
+  .chatbot-toggle {
+    width: 45px; /* Reduz ainda mais o tamanho do toggle */
+    height: 45px;
+    font-size: 22px; /* Reduz tamanho do ícone do toggle */
+    margin-bottom: 8px; /* Ajusta margem inferior */
+  }
+
+  .chatbot-call-to-action {
+    right: 50px; /* Ajusta posição */
+    font-size: 0.8rem; /* Reduz fonte */
+    padding: 6px 10px; /* Reduz padding */
+  }
+}
+
+/* Responsivo (opcional) - Regra original do usuário para telas muito pequenas */
+/* Esta regra sobrepõe as anteriores para telas com no máximo 400px de largura */
+@media (max-width: 400px) {
+  .chatbot-container {
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0; /* Borda reta conforme a regra original do usuário */
+  }
+}

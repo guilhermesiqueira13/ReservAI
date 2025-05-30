@@ -11,13 +11,19 @@
 
 <body>
   <header class="container-header">
-    <a href="#">
+    <a href="#" class="logo" aria-label="Página inicial do ReservAI">
       <img src="./src/assets/images/logo-reservai.svg" alt="Logotipo do ReservAI" aria-hidden="true">
     </a>
+    <button class="hamburger-menu" aria-label="Toggle navigation menu" aria-expanded="false">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+    <div class="nav-backdrop" aria-hidden="true"></div>
     <div class="nav-container">
       <nav class="nav-header">
         <ul>
-          <li><a href="#beneficios">Beneficíos</a></li>
+          <li><a href="#beneficios">Benefícios</a></li>
           <li><a href="#recursos">Recursos</a></li>
           <li><a href="#planos">Planos</a></li>
           <li><a href="#faq">FAQ</a></li>
@@ -27,7 +33,7 @@
     </div>
   </header>
   <main>
-    <section class="section-container background-section">
+    <section class="section-container background-section section1">
       <div class="section-content">
         <h1 class="section-content-title">Automatize Sua Comunicação com Chatbots Inteligentes<span>!</span></h1>
         <h2 class="section-content-subtitle">Engaje clientes, reduza custos e aumente conversões com nossa IA de ponta.</h2>

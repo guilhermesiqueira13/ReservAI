@@ -10,18 +10,24 @@
 
 <body>
   <header class="container-header">
-    <a href="../../index.html">
+    <a href="../../index.html" class="logo" aria-label="Página inicial do ReservAI">
       <img src="../assets/images/logo-reservai.svg" alt="Logotipo do ReservAI" aria-hidden="true">
     </a>
+    <button class="hamburger-menu" aria-label="Toggle navigation menu" aria-expanded="false">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+    <div class="nav-backdrop" aria-hidden="true"></div>
     <div class="nav-container">
       <nav class="nav-header">
         <ul>
-          <li><a href="../../index.html#beneficios">Beneficíos</a></li>
-          <li><a href="../../index.html#recursos">Recursos</a></li>
-          <li><a href="../../index.html#planos">Planos</a></li>
-          <li><a href="../../index.html#faq">FAQ</a></li>
+          <li><a href="#beneficios">Benefícios</a></li>
+          <li><a href="#recursos">Recursos</a></li>
+          <li><a href="#planos">Planos</a></li>
+          <li><a href="#faq">FAQ</a></li>
         </ul>
-        <a href="#" class="button" aria-label="Experimente o sistema gratuitamente">Experimente Grátis</a>
+        <a href="./src/pages/teste-gratis.html" class="button" aria-label="Experimente o sistema gratuitamente">Experimente Grátis</a>
       </nav>
     </div>
   </header>
@@ -156,7 +162,7 @@
       <div class="footer-infos">
         <span>© 2025 ResvarvAI. Todos os direitos reservados.</span>
         <a href="#" aria-current="page">Termos de uso</a>
-        <a href="../components/privacidade.html">Privacidade</a>
+        <a href="../pages/privacidade.html">Privacidade</a>
       </div>
     </div>
   </footer>

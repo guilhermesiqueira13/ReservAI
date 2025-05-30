@@ -186,3 +186,122 @@
   font-size: 1.25rem;
   margin-bottom: 30px;
 }
+@media (max-width: 1024px) {
+  .planos-content {
+    padding-top: 2.5rem;
+  }
+
+  .planos-cards {
+    gap: 1.5rem; /* Tighter gap for cards */
+  }
+
+  .plano-card {
+    width: clamp(260px, 45%, 320px); /* Slightly smaller cards */
+    min-height: 380px;
+  }
+
+  .toggle-container {
+    width: clamp(140px, 35vw, 180px); /* Smaller toggle */
+    height: 2.75rem;
+  }
+
+  .toggle-btn {
+    font-size: clamp(0.8rem, 2.5vw, 0.9rem);
+  }
+
+  .plano-card-title {
+    font-size: clamp(1.5rem, 4.5vw, 2rem);
+  }
+
+  .plano-button {
+    padding: 0.75rem 1.25rem;
+    font-size: clamp(0.85rem, 2.5vw, 1rem);
+  }
+
+  .plano-card.premium::after {
+    width: clamp(80px, 20vw, 90px);
+    font-size: clamp(0.7rem, 2vw, 0.8rem);
+    right: clamp(10%, 25%, 100px);
+  }
+
+  .card-highlight-number {
+    font-size: clamp(2.25rem, 7vw, 3.25rem);
+  }
+}
+
+/* Media Query for Tablets (≤768px) */
+@media (max-width: 768px) {
+  .planos-cards {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .plano-card {
+    width: 90%;
+    margin-bottom: 2rem;
+  }
+
+  .toggle-container {
+    width: clamp(120px, 50vw, 180px);
+    height: 2.5rem;
+  }
+  .planos-content h2 {
+    text-align: center;
+  }
+  .toggle-btn {
+    font-size: clamp(0.75rem, 2.5vw, 0.875rem);
+  }
+
+  .plano-card.premium::after {
+    right: clamp(10%, 25%, 100px);
+  }
+}
+
+/* Media Query for Mobile (≤480px) */
+@media (max-width: 480px) {
+  .planos-content {
+    padding-top: 2rem;
+  }
+
+  .planos-content h1 {
+    font-size: clamp(1.25rem, 6vw, 1.75rem);
+  }
+
+  .planos-content h2 {
+    font-size: clamp(1rem, 5vw, 1.25rem);
+    margin-bottom: 2rem;
+  }
+
+  .toggle-container {
+    width: clamp(100px, 60vw, 150px);
+    height: 2rem;
+  }
+
+  .toggle-btn {
+    font-size: clamp(0.7rem, 3vw, 0.8rem);
+  }
+
+  .plano-card {
+    width: 95%;
+    min-height: 350px;
+  }
+
+  .plano-card-title {
+    font-size: clamp(1.5rem, 6vw, 2rem);
+  }
+
+  .plano-button {
+    padding: 0.75rem 1.25rem;
+    font-size: clamp(0.8rem, 3.5vw, 1rem);
+  }
+
+  .plano-card.premium::after {
+    width: clamp(70px, 30vw, 90px);
+    font-size: clamp(0.7rem, 2.5vw, 0.8rem);
+    right: clamp(10%, 20%, 80px);
+  }
+
+  .card-highlight-number {
+    font-size: clamp(2rem, 7vw, 3rem);
+  }
+}

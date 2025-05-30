@@ -74,3 +74,53 @@
 .accordion-item.active .minus-icon {
   opacity: 1;
 }
+/* Media Queries para responsividade */
+@media (max-width: 768px) {
+  .faq-accordion {
+    display: flex;
+    align-items: center;
+  }
+  .faq-content h1 {
+    font-size: 1.8em;
+  }
+  .faq-content h2 {
+    font-size: 1em;
+  }
+
+  .accordion-item {
+    width: 95%; /* Aumenta a largura para ocupar mais espaço em telas menores */
+    padding: 15px;
+  }
+
+  .accordion-header {
+    font-size: 1rem; /* Reduz o tamanho da fonte do cabeçalho */
+  }
+
+  .accordion-content {
+    font-size: 0.9rem; /* Reduz o tamanho da fonte do conteúdo */
+  }
+}
+
+@media (max-width: 480px) {
+  .faq-content h1 {
+    font-size: 1.5em;
+  }
+
+  .faq-content h2 {
+    font-size: 1.1em;
+  }
+
+  .accordion-item {
+    width: 98%; /* Ocupa quase toda a largura em telas muito pequenas */
+    padding: 10px;
+  }
+
+  .accordion-header {
+    font-size: 0.9rem;
+  }
+
+  .accordion-icons img {
+    width: 18px;
+    height: 18px;
+  }
+}
